@@ -1,6 +1,8 @@
 /*
- * Minimal PS-X EXE entry point. No BIOS function vectors, exception hooks or
- * cartridge mapping are used by the bare-metal standalone program.
+ * Minimal startup compatible with ps1-bare-metal's executable.ld layout.
+ *
+ * The EXE header supplies the initial stack.  We set $gp before touching
+ * small-data variables, clear every word in BSS, and then call main.
  */
 
 	.set noreorder
@@ -9,13 +11,10 @@
 	.ent _start
 
 _start:
-	/* Keep the stack below the conventional 2 MiB RAM top. */
-	lui	$sp, 0x8020
-	addiu	$sp, $sp, -256
+	la	$gp, _gp
 
-	/* The PS-X EXE loader does not clear BSS. */
-	la	$t0, _bss_start
-	la	$t1, _bss_end
+	la	$t0, _bssStart
+	la	$t1, _bssEnd
 1:
 	beq	$t0, $t1, 2f
 	nop

@@ -11,6 +11,7 @@ permissions:
 env:
   N00BROM_TAG: 0.30b
   ARMIPS_REPOSITORY: Kingcom/armips
+  ARMIPS_COMMIT: 2d7f351e640ec260b43943f07a00c57211940378
 
 jobs:
   build:
@@ -23,7 +24,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --yes cmake ninja-build g++ python3 \
-            gcc-mipsel-linux-gnu binutils-mipsel-linux-gnu
+            gcc-mipsel-linux-gnu
 
       - name: Fetch pinned n00bROM source
         run: |
@@ -32,8 +33,11 @@ jobs:
 
       - name: Build armips
         run: |
-          git clone --depth 1 --recurse-submodules \
+          git clone --no-checkout \
             "https://github.com/$ARMIPS_REPOSITORY.git" "$RUNNER_TEMP/armips-source"
+          git -C "$RUNNER_TEMP/armips-source" checkout "$ARMIPS_COMMIT"
+          git -C "$RUNNER_TEMP/armips-source" submodule update \
+            --init --recursive --depth 1
           cmake -S "$RUNNER_TEMP/armips-source" -B "$RUNNER_TEMP/armips-build" \
             -G Ninja -DCMAKE_BUILD_TYPE=Release \
             -DARMIPS_PRECOMPILE_HEADERS=OFF -DARMIPS_USE_STD_FILESYSTEM=ON
@@ -55,27 +59,41 @@ jobs:
         run: |
           python3 tools/build_baremetal.py \
             --gcc "$(command -v mipsel-linux-gnu-gcc)" \
-            --objcopy "$(command -v mipsel-linux-gnu-objcopy)" \
-            --output dist/n00brom.psexe
+            --output dist/n00brom.psexe \
+            --smoke-output dist/ps1-bare-metal-smoketest.psexe
 
       - name: Verify PS-X EXE structure
         run: |
           python3 - <<'PY'
+          import hashlib
           import struct
           from pathlib import Path
-          exe = Path("dist/n00brom.psexe").read_bytes()
-          assert exe[:8] == b"PS-X EXE"
-          entry, gp, load, size = struct.unpack_from("<4I", exe, 0x10)
-          sp, stack_size = struct.unpack_from("<2I", exe, 0x30)
-          assert load == 0x80010000
-          assert entry == load
-          assert size % 2048 == 0
-          assert len(exe) == 2048 + size
-          assert 0x80010000 <= entry < load + size
-          assert 0x80010000 <= sp < 0x80200000
-          assert b"INPUT IS DIRECT SIO0" in exe
-          assert b"N00BROM STANDALONE" in exe
-          print(f"valid PS-X EXE: entry={entry:#x}, load={load:#x}, size={size:#x}")
+
+          images = [
+              Path("dist/n00brom.psexe"),
+              Path("dist/ps1-bare-metal-smoketest.psexe"),
+          ]
+          for path in images:
+              exe = path.read_bytes()
+              assert exe[:8] == b"PS-X EXE"
+              entry, gp, load, size = struct.unpack_from("<4I", exe, 0x10)
+              sp, stack_size = struct.unpack_from("<2I", exe, 0x30)
+              assert load == 0x80010000
+              assert entry == load
+              assert size and size % 2048 == 0
+              assert len(exe) == 2048 + size
+              assert load <= entry < load + size
+              assert 0x80010000 <= sp < 0x80200000
+              print(
+                  f"{path}: entry={entry:#x}, load={load:#x}, "
+                  f"size={size:#x}, sha256={hashlib.sha256(exe).hexdigest()}"
+              )
+
+          standalone = images[0].read_bytes()
+          smoke = images[1].read_bytes()
+          assert b"INPUT IS DIRECT SIO0" in standalone
+          assert b"N00BROM STANDALONE" in standalone
+          assert standalone != smoke
           PY
 
       - name: Upload build artifacts

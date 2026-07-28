@@ -6,16 +6,7 @@
  * ps1-bare-metal controller example, rather than n00bROM's BIOS IRQ hook.
  */
 
-typedef unsigned char  u8;
-typedef unsigned short u16;
-typedef unsigned int   u32;
-
-#define MMIO8(address)  (*(volatile u8  *)(address))
-#define MMIO16(address) (*(volatile u16 *)(address))
-#define MMIO32(address) (*(volatile u32 *)(address))
-
-#define GPU_GP0 MMIO32(0x1f801810)
-#define GPU_GP1 MMIO32(0x1f801814)
+#include "ps1_gpu.h"
 
 #define SIO0_DATA MMIO8(0x1f801040)
 #define SIO0_STAT MMIO16(0x1f801044)
@@ -43,12 +34,6 @@ typedef unsigned int   u32;
 #define PAD_LEFT   0x0080
 #define PAD_CROSS  0x4000
 
-#define SCREEN_WIDTH  320
-#define SCREEN_HEIGHT 240
-
-/* RGB is stored by GP0 as little-endian 0x00BBGGRR. */
-#define RGB(r, g, b) ((u32) (r) | ((u32) (g) << 8) | ((u32) (b) << 16))
-
 static int page;
 static int menuItem;
 static int videoMode;
@@ -64,40 +49,14 @@ static void delayMicroseconds(int microseconds) {
 		__asm__ volatile("nop");
 }
 
-static void waitGP0(void) {
-	while (!(GPU_GP1 & (1u << 26)))
-		__asm__ volatile("");
-}
-
-static void gp0(u32 command) {
-	waitGP0();
-	GPU_GP0 = command;
-}
-
 static void fillRect(int x, int y, int width, int height, u32 color) {
-	gp0(0x02000000 | color);
-	gp0((u32) x | ((u32) y << 16));
-	gp0((u32) width | ((u32) height << 16));
+	fillVRAM(x, y, width, height, color);
 }
 
 static void drawBlock(int x, int y, int scale, u32 color) {
-	gp0(0x60000000 | color);
-	gp0((u32) x | ((u32) y << 16));
-	gp0((u32) scale | ((u32) scale << 16));
-}
-
-static void initGPU(void) {
-	GPU_GP1 = 0x00000000; /* Reset GPU. */
-	GPU_GP1 = 0x05000000; /* Display VRAM origin. */
-	GPU_GP1 = 0x06c58258; /* Horizontal display range for 320 pixels. */
-	GPU_GP1 = 0x07040010; /* NTSC vertical range. */
-	GPU_GP1 = 0x08000001; /* 320x240, 15-bit, NTSC. */
-	GPU_GP1 = 0x03000000; /* Enable display. */
-
-	gp0(0xe1000000); /* Draw mode. */
-	gp0(0xe3000000); /* Draw area top-left. */
-	gp0(0xe403bd3f); /* Draw area bottom-right (319, 239). */
-	gp0(0xe5000000); /* Draw offset. */
+	sendGP0(0x60000000u | color);
+	sendGP0(XY(x, y));
+	sendGP0(XY(scale, scale));
 }
 
 static void initControllerBus(void) {
@@ -351,9 +310,10 @@ int main(void) {
 	int connected;
 	u16 buttons;
 
-	initGPU();
+	setupGPU();
 	initControllerBus();
 	render();
+	showFramebuffer();
 
 	for (;;) {
 		connected = pollController(&buttons, &controllerType);

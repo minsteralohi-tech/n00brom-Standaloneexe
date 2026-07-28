@@ -12,3 +12,4 @@ third_party/
 armips-src/
 armips-build/
 n00brom-source/
+.sentry-native/

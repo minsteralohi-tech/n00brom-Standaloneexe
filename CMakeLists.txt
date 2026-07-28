@@ -21,10 +21,6 @@ set(
 	MIPS_GCC_EXECUTABLE ""
 	CACHE FILEPATH "Path to a mipsel-none-elf-gcc or mipsel-linux-gnu-gcc executable"
 )
-set(
-	MIPS_OBJCOPY_EXECUTABLE ""
-	CACHE FILEPATH "Path to the matching MIPS objcopy executable"
-)
 if(NOT IS_DIRECTORY "${N00BROM_SOURCE_DIR}")
 	message(FATAL_ERROR "Set N00BROM_SOURCE_DIR to a n00bROM checkout or release source directory")
 endif()
@@ -37,11 +33,8 @@ endif()
 if(NOT IS_EXECUTABLE "${MIPS_GCC_EXECUTABLE}")
 	find_program(MIPS_GCC_EXECUTABLE NAMES mipsel-none-elf-gcc mipsel-linux-gnu-gcc)
 endif()
-if(NOT IS_EXECUTABLE "${MIPS_OBJCOPY_EXECUTABLE}")
-	find_program(MIPS_OBJCOPY_EXECUTABLE NAMES mipsel-none-elf-objcopy mipsel-linux-gnu-objcopy)
-endif()
-if(NOT MIPS_GCC_EXECUTABLE OR NOT MIPS_OBJCOPY_EXECUTABLE)
-	message(FATAL_ERROR "Set MIPS_GCC_EXECUTABLE and MIPS_OBJCOPY_EXECUTABLE for the bare-metal target")
+if(NOT MIPS_GCC_EXECUTABLE)
+	message(FATAL_ERROR "Set MIPS_GCC_EXECUTABLE for the bare-metal target")
 endif()
 
 set(DIST_DIR "${CMAKE_BINARY_DIR}/dist")
@@ -63,25 +56,30 @@ add_custom_command(
 	VERBATIM
 )
 add_custom_command(
-	OUTPUT "${DIST_DIR}/n00brom.psexe"
+	OUTPUT
+		"${DIST_DIR}/n00brom.psexe"
+		"${DIST_DIR}/ps1-bare-metal-smoketest.psexe"
 	COMMAND
 		"${Python3_EXECUTABLE}"
 		"${CMAKE_CURRENT_LIST_DIR}/tools/build_baremetal.py"
 		--gcc "${MIPS_GCC_EXECUTABLE}"
-		--objcopy "${MIPS_OBJCOPY_EXECUTABLE}"
 		--output "${DIST_DIR}/n00brom.psexe"
+		--smoke-output "${DIST_DIR}/ps1-bare-metal-smoketest.psexe"
 	WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
 	DEPENDS
 		"${CMAKE_CURRENT_LIST_DIR}/tools/build_baremetal.py"
-		"${CMAKE_CURRENT_LIST_DIR}/tools/raw_to_psexe.py"
+		"${CMAKE_CURRENT_LIST_DIR}/tools/elf_to_psexe.py"
 		"${CMAKE_CURRENT_LIST_DIR}/standalone/bare.ld"
 		"${CMAKE_CURRENT_LIST_DIR}/standalone/start.S"
+		"${CMAKE_CURRENT_LIST_DIR}/standalone/ps1_gpu.h"
 		"${CMAKE_CURRENT_LIST_DIR}/standalone/main.c"
+		"${CMAKE_CURRENT_LIST_DIR}/standalone/smoke.c"
 	VERBATIM
 )
 add_custom_target(n00brom ALL DEPENDS
 	"${DIST_DIR}/n00brom.rom"
 	"${DIST_DIR}/n00brom.psexe"
+	"${DIST_DIR}/ps1-bare-metal-smoketest.psexe"
 	"${DIST_DIR}/n00brom-relocated-legacy.psexe"
 	"${DIST_DIR}/manifest.json"
 )

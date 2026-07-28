@@ -8,6 +8,9 @@ This repository produces two different PS1 images from the proven n00bROM
 - `n00brom.psexe`: the standalone release. It is a new RAM-resident,
   direct-hardware program at `0x80010000`; it does **not** execute n00bROM's
   BIOS interrupt hook, cartridge ROM bootstrap, or expansion-port mappings.
+- `ps1-bare-metal-smoketest.psexe`: a deliberately tiny visual control based
+  on ps1-bare-metal's `01_basicGraphics`; it displays a gray background and a
+  red/green/blue shaded triangle.
 
 The standalone runtime's GPU and SIO0 setup follows the proven register-level
 patterns in [spicyjpeg/ps1-bare-metal](https://github.com/spicyjpeg/ps1-bare-metal).
@@ -18,10 +21,18 @@ input in emulators.
 
 ## First bare-metal build
 
-Load **only** `n00brom.psexe` from the current Actions artifact. Its opening
+First load `ps1-bare-metal-smoketest.psexe`. If the gray screen and colored
+triangle appear, PS-X EXE loading and GPU output are working in the emulator.
+Then load **only** `n00brom.psexe` from the same Actions artifact. Its opening
 screen reads `N00BROM STANDALONE`, `BARE METAL RUNTIME`, and `INPUT IS DIRECT
 SIO0`; a screen carrying n00bROM's original disclaimer is the retired
 relocated reference build, not this executable.
+
+Do not use `00_helloWorld` as a video test: the upstream example writes
+`Hello world!` to SIO1 serial and intentionally initializes no video output.
+The standalone and smoke-test targets use the GPU sequence from
+`01_basicGraphics`, including PAL/NTSC preservation, centered display ranges,
+drawing-area setup and the final framebuffer display offset.
 
 - Press **SELECT** to open Settings.
 - Press **START** to open the Disc Services status page.
@@ -65,8 +76,10 @@ approach being replaced.
 - Kingcom armips
 - An upstream n00bROM checkout or release source archive, pinned to 0.30b
 
-The repository does not vendor third-party source. This keeps licensing and
-provenance clear and lets CI pin the exact upstream revision.
+The small linker/converter/GPU subsets derived from ps1-bare-metal retain
+upstream attribution and its ISC license notice in
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md). n00bROM and armips source
+remain upstream, and CI pins the n00bROM release tag and armips commit.
 
 ## Local build
 
@@ -82,18 +95,19 @@ python tools\build_n00brom.py `
 ```
 
 The command writes `dist/n00brom.rom`, the legacy reference image and a
-`dist/manifest.json`. Build the release standalone executable separately with
-a MIPS GCC and objcopy pair:
+`dist/manifest.json`. Build the release standalone executable and visual
+smoke test separately with a MIPS GCC:
 
 ```powershell
 python tools\build_baremetal.py `
   --gcc C:\path\to\mipsel-none-elf-gcc.exe `
-  --objcopy C:\path\to\mipsel-none-elf-objcopy.exe `
-  --output dist\n00brom.psexe
+  --output dist\n00brom.psexe `
+  --smoke-output dist\ps1-bare-metal-smoketest.psexe
 ```
 
-The standalone output is a valid PS-X EXE (`PS-X EXE` magic, aligned payload,
-load address `0x80010000`, and entry point inside the payload).
+The ELF-to-EXE step is derived from ps1-bare-metal's proven
+`convertExecutable.py`; it reads the ELF entry point and loadable segments
+instead of assuming an objcopy-generated raw image.
 
 For CMake users:
 
@@ -107,15 +121,16 @@ cmake --build build --target n00brom
 ## GitHub Actions
 
 `.github/workflows/build.yml` builds armips from its upstream CMake project,
-checks out n00bROM tag `0.30b`, builds the independent bare-metal EXE with a
-MIPS cross compiler, verifies its PS-X EXE header and identifying strings, and
-uploads the images plus manifest as a workflow artifact. It runs on push, pull
-request and manual dispatch.
+checks out n00bROM tag `0.30b`, builds the independent bare-metal and smoke-test
+EXEs with a MIPS cross compiler, verifies both PS-X EXE headers and identifying
+strings, and uploads the images plus manifest as a workflow artifact. It runs
+on push, pull request and manual dispatch.
 
 ## Provenance and licensing
 
 n00bROM is by Lameguy64 and contributors; its original license and source
 remain upstream at [Lameguy64/n00brom](https://github.com/Lameguy64/n00brom).
-armips is by Kingcom and contributors. The PS1 executable layout reference is
-MIT-licensed in [spicyjpeg/ps1-bare-metal](https://github.com/spicyjpeg/ps1-bare-metal).
-This repository's build scripts are provided under the MIT license.
+armips is by Kingcom and contributors. The derived linker, converter and GPU
+initialization are based on the ISC-licensed
+[spicyjpeg/ps1-bare-metal](https://github.com/spicyjpeg/ps1-bare-metal).
+This repository's original build scripts are provided under the MIT license.
