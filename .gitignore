@@ -1,0 +1,14 @@
+build/
+dist/
+env/
+__pycache__/
+third_party/
+*.elf
+*.lst
+*.sym
+*.bin
+*.rom
+*.psexe
+armips-src/
+armips-build/
+n00brom-source/
