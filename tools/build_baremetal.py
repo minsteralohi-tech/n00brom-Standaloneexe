@@ -63,6 +63,7 @@ def compile_elf(gcc: Path, source: Path, output: Path) -> None:
             "-o",
             str(output),
             str(ROOT / "standalone" / "start.S"),
+            str(ROOT / "standalone" / "cache.s"),
             str(source),
             "-lgcc",
         ]

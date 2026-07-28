@@ -2,8 +2,8 @@
 
 ## ps1-bare-metal
 
-The standalone linker layout, ELF-to-PS-X-EXE converter and GPU initialization
-are derived from `spicyjpeg/ps1-bare-metal`, commit
+The standalone linker layout, ELF-to-PS-X-EXE converter, GPU initialization
+and instruction-cache flush are derived from `spicyjpeg/ps1-bare-metal`, commit
 `22072b848b91a812b2cb2590a08bfb92779de0df`.
 
 Copyright (c) 2023-2025 spicyjpeg

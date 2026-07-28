@@ -13,6 +13,17 @@
 	.ent _start
 
 _start:
+	/*
+	 * A serial loader may DMA the payload into RAM without invalidating the
+	 * instruction cache. Flush it before executing C code, then permanently
+	 * disable CPU interrupts: this standalone target owns no BIOS exception
+	 * handler and must not inherit UniROM's interrupt state.
+	 */
+	jal	flushCache
+	nop
+	mtc0	$zero, $12
+	nop
+
 	/* Do not rely on a loader honoring the PS-X EXE stack fields. */
 	lui	$sp, 0x8020
 	addiu	$sp, $sp, -256
