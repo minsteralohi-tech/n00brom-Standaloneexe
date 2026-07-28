@@ -1,0 +1,15 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "n00bROM build",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "N00BROM_SOURCE_DIR": "$env{N00BROM_SOURCE_DIR}",
+        "ARMIPS_EXECUTABLE": "$env{ARMIPS_EXECUTABLE}"
+      }
+    }
+  ]
+}
