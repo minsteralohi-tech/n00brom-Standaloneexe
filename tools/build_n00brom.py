@@ -18,6 +18,7 @@ from raw_to_psexe import write_psexe
 
 STANDALONE_BASE = 0x80010000
 STANDALONE_STACK = 0x801FFF00
+PAD_CTRL_WITH_RX = "0x1007"  # TX + DTR + RX + DSR acknowledge interrupt
 
 
 def sha256(path: Path) -> str:
@@ -81,6 +82,18 @@ def make_standalone_source(original: str) -> str:
     if "\trfe" in ram_block:
         ram_block = ram_block.replace("\n\trfe", "\n\tnop", 1)
 
+    # In the cartridge build this path returns to the intercepted BIOS CD
+    # bootstrap routine. There is no equivalent return address for a PS-X EXE,
+    # so keep the standalone program alive and direct users to SELECT/menu.
+    ram_block, start_replacements = re.subn(
+        r"@@exit_boot:\s*\n\s*b\s+@@exit\s*\n\s*move\s+v0,\s*r0",
+        "@@exit_boot:\n\tb\t\t@@no_pad\n\tnop",
+        ram_block,
+        count=1,
+    )
+    if start_replacements != 1:
+        raise ValueError("unable to patch cartridge-only START handler")
+
     rom_block = original[second:]
     config_start = rom_block.find("config:")
     sram_start = rom_block.find("sram_jump:")
@@ -123,6 +136,41 @@ def build(source_dir: Path, armips: Path, out_dir: Path) -> dict[str, str]:
 
         standalone_asm = stage / "n00brom-standalone.asm"
         standalone_asm.write_text(make_standalone_source(source_text), encoding="utf-8")
+
+        # n00bROM's original controller code targets a cartridge boot context
+        # and configures SIO0 with TX/DTR but not RX enabled (0x1003). A
+        # stand-alone executable must explicitly enable RX or current emulators
+        # commonly expose no controller input. Keep this change out of the
+        # native ROM build above.
+        pad_path = stage / "pad.inc"
+        pad_source = pad_path.read_text(encoding="utf-8")
+        replacements = pad_source.count("0x1003")
+        if replacements != 2:
+            raise RuntimeError("unexpected controller setup in pad.inc")
+        pad_path.write_text(
+            pad_source.replace("0x1003", PAD_CTRL_WITH_RX), encoding="utf-8"
+        )
+
+        # Keep the on-screen instructions truthful for a PS-X EXE. The ROM
+        # variant retains these original messages and the associated CD boot
+        # path.
+        strings_path = stage / "strings.inc"
+        strings_source = strings_path.read_text(encoding="utf-8")
+        for original_message in (
+            '"Press START to boot CD..."',
+            '"Press START to unlock boot CD..."',
+            '"Press START to EZ-swap boot CD..."',
+        ):
+            if original_message not in strings_source:
+                raise RuntimeError(f"missing expected n00bROM message: {original_message}")
+            strings_source = strings_source.replace(
+                original_message, '"START requires cartridge ROM"'
+            )
+        strings_source = strings_source.replace(
+            '"Press SELECT for ROM menu..."', '"SELECT opens ROM menu"'
+        )
+        strings_path.write_text(strings_source, encoding="utf-8")
+
         run_armips(armips, stage, standalone_asm.name, build_date)
         raw = stage / "n00brom-standalone.bin"
         if not raw.is_file():
