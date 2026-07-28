@@ -39,6 +39,26 @@ drawing-area setup and the final framebuffer display offset.
 - In Settings, use the **D-pad** to move, **Cross** to change the available
   in-memory video/background options, and **SELECT** or **START** to return.
 
+### PCSX-Redux keyboard controls
+
+The PCSX-Redux configuration on this machine maps: **Start** = Enter,
+**Select** = Tab, **D-pad** = arrow keys, **Cross** = X, **Circle** = D,
+**Square** = Z and **Triangle** = S. L1/L2/L3 are Q/A/W and R1/R2/R3 are
+R/F/T. These bindings can be changed from PCSX-Redux's controller settings.
+
+### DuckStation and UniROM loading
+
+In DuckStation, boot the file as an executable (not as a disc image):
+
+```text
+duckstation-qt-x64-ReleaseLTCG.exe -exe n00brom.psexe
+```
+
+The startup code also establishes its own stack and `$gp`, rather than relying
+on the EXE header being honored. That is required for serial transfer loaders
+such as UniROM. If DuckStation still shows black, use its **interpreter** CPU
+mode once and disable PGXP/runahead while testing; then capture its debug log.
+
 The screen immediately changes `PAD 1: WAITING` to `DIGITAL`, `ANALOG STICK`
 or `DUALSHOCK` after a compatible controller answers. That gives an explicit
 controller transport check instead of treating a frozen splash screen as a
