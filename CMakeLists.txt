@@ -59,12 +59,21 @@ add_custom_command(
 	OUTPUT
 		"${DIST_DIR}/n00brom.psexe"
 		"${DIST_DIR}/ps1-bare-metal-smoketest.psexe"
+		"${DIST_DIR}/n00brom-unirom-highram.psexe"
+		"${DIST_DIR}/ps1-bare-metal-smoketest-unirom-highram.psexe"
 	COMMAND
 		"${Python3_EXECUTABLE}"
 		"${CMAKE_CURRENT_LIST_DIR}/tools/build_baremetal.py"
 		--gcc "${MIPS_GCC_EXECUTABLE}"
 		--output "${DIST_DIR}/n00brom.psexe"
 		--smoke-output "${DIST_DIR}/ps1-bare-metal-smoketest.psexe"
+	COMMAND
+		"${Python3_EXECUTABLE}"
+		"${CMAKE_CURRENT_LIST_DIR}/tools/build_baremetal.py"
+		--gcc "${MIPS_GCC_EXECUTABLE}"
+		--load-address 0x80180000
+		--output "${DIST_DIR}/n00brom-unirom-highram.psexe"
+		--smoke-output "${DIST_DIR}/ps1-bare-metal-smoketest-unirom-highram.psexe"
 	WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
 	DEPENDS
 		"${CMAKE_CURRENT_LIST_DIR}/tools/build_baremetal.py"
@@ -81,6 +90,8 @@ add_custom_target(n00brom ALL DEPENDS
 	"${DIST_DIR}/n00brom.rom"
 	"${DIST_DIR}/n00brom.psexe"
 	"${DIST_DIR}/ps1-bare-metal-smoketest.psexe"
+	"${DIST_DIR}/n00brom-unirom-highram.psexe"
+	"${DIST_DIR}/ps1-bare-metal-smoketest-unirom-highram.psexe"
 	"${DIST_DIR}/n00brom-relocated-legacy.psexe"
 	"${DIST_DIR}/manifest.json"
 )

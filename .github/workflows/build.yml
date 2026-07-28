@@ -62,6 +62,14 @@ jobs:
             --output dist/n00brom.psexe \
             --smoke-output dist/ps1-bare-metal-smoketest.psexe
 
+      - name: Build UniROM high-RAM diagnostic PS-X EXE
+        run: |
+          python3 tools/build_baremetal.py \
+            --gcc "$(command -v mipsel-linux-gnu-gcc)" \
+            --load-address 0x80180000 \
+            --output dist/n00brom-unirom-highram.psexe \
+            --smoke-output dist/ps1-bare-metal-smoketest-unirom-highram.psexe
+
       - name: Verify PS-X EXE structure
         run: |
           python3 - <<'PY'
@@ -69,16 +77,18 @@ jobs:
           import struct
           from pathlib import Path
 
-          images = [
-              Path("dist/n00brom.psexe"),
-              Path("dist/ps1-bare-metal-smoketest.psexe"),
-          ]
-          for path in images:
+          images = {
+              Path("dist/n00brom.psexe"): 0x80010000,
+              Path("dist/ps1-bare-metal-smoketest.psexe"): 0x80010000,
+              Path("dist/n00brom-unirom-highram.psexe"): 0x80180000,
+              Path("dist/ps1-bare-metal-smoketest-unirom-highram.psexe"): 0x80180000,
+          }
+          for path, expected_load in images.items():
               exe = path.read_bytes()
               assert exe[:8] == b"PS-X EXE"
               entry, gp, load, size = struct.unpack_from("<4I", exe, 0x10)
               sp, stack_size = struct.unpack_from("<2I", exe, 0x30)
-              assert load == 0x80010000
+              assert load == expected_load
               assert entry == load
               assert size and size % 2048 == 0
               assert len(exe) == 2048 + size
@@ -89,8 +99,8 @@ jobs:
                   f"size={size:#x}, sha256={hashlib.sha256(exe).hexdigest()}"
               )
 
-          standalone = images[0].read_bytes()
-          smoke = images[1].read_bytes()
+          standalone = Path("dist/n00brom.psexe").read_bytes()
+          smoke = Path("dist/ps1-bare-metal-smoketest.psexe").read_bytes()
           assert b"INPUT IS DIRECT SIO0" in standalone
           assert b"N00BROM STANDALONE" in standalone
           assert standalone != smoke

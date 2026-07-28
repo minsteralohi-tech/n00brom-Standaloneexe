@@ -8,6 +8,10 @@ This repository produces two different PS1 images from the proven n00bROM
 - `n00brom.psexe`: the standalone release. It is a new RAM-resident,
   direct-hardware program at `0x80010000`; it does **not** execute n00bROM's
   BIOS interrupt hook, cartridge ROM bootstrap, or expansion-port mappings.
+- `n00brom-unirom-highram.psexe`: the same independent runtime linked at
+  `0x80180000`, with 512 KiB reserved below the top-of-RAM stack. It is a
+  diagnostic image for a suspected resident-loader RAM collision; the normal
+  image remains at UniROM's documented conventional EXE address.
 - `ps1-bare-metal-smoketest.psexe`: a deliberately tiny visual control based
   on ps1-bare-metal's `01_basicGraphics`; it displays a gray background and a
   red/green/blue shaded triangle.
@@ -60,6 +64,16 @@ code. That is required for serial transfer loaders such as UniROM, which may
 otherwise leave stale code in cache or BIOS interrupts active. If DuckStation
 still shows black, use its **interpreter** CPU mode once and disable
 PGXP/runahead while testing; then capture its debug log.
+
+For real hardware, first send the normal `n00brom.psexe` with NOPS `/exe`.
+NOPS's public source shows that `/exe` transfers and uses the PS-X EXE header's
+declared load and entry addresses, and its own published UniROM example uses
+`0x80010000`; that makes a collision at the normal address unproven. If the
+normal image still crashes after the cache/interrupt-safe startup, send
+`n00brom-unirom-highram.psexe` instead. It uses the same code and controller
+path at `0x80180000`, while keeping the conventional image available for
+emulators and ordinary loaders. Do not use `/bin` for either image: `/bin`
+does not interpret a PS-X EXE header.
 
 The screen immediately changes `PAD 1: WAITING` to `DIGITAL`, `ANALOG STICK`
 or `DUALSHOCK` after a compatible controller answers. That gives an explicit
@@ -126,6 +140,9 @@ python tools\build_baremetal.py `
   --output dist\n00brom.psexe `
   --smoke-output dist\ps1-bare-metal-smoketest.psexe
 ```
+
+To make the UniROM high-RAM diagnostic image locally, add
+`--load-address 0x80180000` and choose a distinct output filename.
 
 The ELF-to-EXE step is derived from ps1-bare-metal's proven
 `convertExecutable.py`; it reads the ELF entry point and loadable segments
