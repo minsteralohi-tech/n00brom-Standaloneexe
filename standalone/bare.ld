@@ -1,1 +1,37 @@
-LyoKICogQmFyZSBQUy1YIEVYRSBsaW5rZXIgc2NyaXB0LgogKgogKiBEZXJpdmVkIGZyb20gc3BpY3lqcGVnL3BzMS1iYXJlLW1ldGFsJ3MgY21ha2UvZXhlY3V0YWJsZS5sZCAoSVNDIGxpY2Vuc2UpLgogKiBUaGlzIHN0YW5kYWxvbmUgcHJvZ3JhbSBpcyBkZWxpYmVyYXRlbHkgcGxhY2VkIGFmdGVyIHRoZSA2NCBLaUIgcmVnaW9uCiAqIHJlc2VydmVkIGJ5IHRoZSBQbGF5U3RhdGlvbiBCSU9TIGtlcm5lbC4KICovCgpFTlRSWShfc3RhcnQpCgpNRU1PUlkgewoJQVBQX1JBTSAocnd4KSA6IE9SSUdJTiA9IDB4ODAwMTAwMDAsIExFTkdUSCA9IDB4MWYwMDAwCn0KClNFQ1RJT05TIHsKCS50ZXh0IDogQUxJR04oNCkgewoJCSooLnRleHQuc3RhcnQpCgkJKigudGV4dCAudGV4dC4qKQoJCSooLnJvZGF0YSAucm9kYXRhLiopCgl9ID4gQVBQX1JBTQoKCS5kYXRhIDogQUxJR04oNCkgewoJCSooLmRhdGEgLmRhdGEuKikKCX0gPiBBUFBfUkFNCgoJLmJzcyAoTk9MT0FEKSA6IEFMSUdOKDQpIHsKCQlfYnNzX3N0YXJ0ID0gLjsKCQkqKC5ic3MgLmJzcy4qKQoJCSooQ09NTU9OKQoJCS4gPSBBTElHTig0KTsKCQlfYnNzX2VuZCA9IC47Cgl9ID4gQVBQX1JBTQoKCS9ESVNDQVJELyA6IHsKCQkqKC5jb21tZW50IC5ub3RlLiogLmdudS4qIC5NSVBTLmFiaWZsYWdzKQoJfQp9Cg==
+/*
+ * Bare PS-X EXE linker script.
+ *
+ * Derived from spicyjpeg/ps1-bare-metal's cmake/executable.ld (ISC license).
+ * This standalone program is deliberately placed after the 64 KiB region
+ * reserved by the PlayStation BIOS kernel.
+ */
+
+ENTRY(_start)
+
+MEMORY {
+	APP_RAM (rwx) : ORIGIN = 0x80010000, LENGTH = 0x1f0000
+}
+
+SECTIONS {
+	.text : ALIGN(4) {
+		*(.text.start)
+		*(.text .text.*)
+		*(.rodata .rodata.*)
+	} > APP_RAM
+
+	.data : ALIGN(4) {
+		*(.data .data.*)
+	} > APP_RAM
+
+	.bss (NOLOAD) : ALIGN(4) {
+		_bss_start = .;
+		*(.bss .bss.*)
+		*(COMMON)
+		. = ALIGN(4);
+		_bss_end = .;
+	} > APP_RAM
+
+	/DISCARD/ : {
+		*(.comment .note.* .gnu.* .MIPS.abiflags)
+	}
+}

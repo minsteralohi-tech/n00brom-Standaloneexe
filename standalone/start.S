@@ -1,1 +1,35 @@
-LyoKICogTWluaW1hbCBQUy1YIEVYRSBlbnRyeSBwb2ludC4gTm8gQklPUyBmdW5jdGlvbiB2ZWN0b3JzLCBleGNlcHRpb24gaG9va3Mgb3IKICogY2FydHJpZGdlIG1hcHBpbmcgYXJlIHVzZWQgYnkgdGhlIGJhcmUtbWV0YWwgc3RhbmRhbG9uZSBwcm9ncmFtLgogKi8KCgkuc2V0IG5vcmVvcmRlcgoJLnNlY3Rpb24gLnRleHQuc3RhcnQsICJheCIsIEBwcm9nYml0cwoJLmdsb2JsIF9zdGFydAoJLmVudCBfc3RhcnQKCl9zdGFydDoKCS8qIEtlZXAgdGhlIHN0YWNrIGJlbG93IHRoZSBjb252ZW50aW9uYWwgMiBNaUIgUkFNIHRvcC4gKi8KCWx1aQkkc3AsIDB4ODAyMAoJYWRkaXUJJHNwLCAkc3AsIC0yNTYKCgkvKiBUaGUgUFMtWCBFWEUgbG9hZGVyIGRvZXMgbm90IGNsZWFyIEJTUy4gKi8KCWxhCSR0MCwgX2Jzc19zdGFydAoJbGEJJHQxLCBfYnNzX2VuZAoxOgoJYmVxCSR0MCwgJHQxLCAyZgoJbm9wCglzdwkkemVybywgMCgkdDApCglhZGRpdQkkdDAsICR0MCwgNAoJYgkxYgoJbm9wCgoyOgoJamFsCW1haW4KCW5vcAoKMzoKCWIJM2IKCW5vcAoKCS5lbmQgX3N0YXJ0Cg==
+/*
+ * Minimal PS-X EXE entry point. No BIOS function vectors, exception hooks or
+ * cartridge mapping are used by the bare-metal standalone program.
+ */
+
+	.set noreorder
+	.section .text.start, "ax", @progbits
+	.globl _start
+	.ent _start
+
+_start:
+	/* Keep the stack below the conventional 2 MiB RAM top. */
+	lui	$sp, 0x8020
+	addiu	$sp, $sp, -256
+
+	/* The PS-X EXE loader does not clear BSS. */
+	la	$t0, _bss_start
+	la	$t1, _bss_end
+1:
+	beq	$t0, $t1, 2f
+	nop
+	sw	$zero, 0($t0)
+	addiu	$t0, $t0, 4
+	b	1b
+	nop
+
+2:
+	jal	main
+	nop
+
+3:
+	b	3b
+	nop
+
+	.end _start

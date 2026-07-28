@@ -1,1 +1,375 @@
-LyoKICogbjAwYlJPTSBzdGFuZGFsb25lIGJhcmUtbWV0YWwgcnVudGltZS4KICoKICogVGhpcyB0YXJnZXQgaW50ZW50aW9uYWxseSB0YWxrcyB0byB0aGUgUFMxIEdQVSBhbmQgU0lPMCByZWdpc3RlcnMgZGlyZWN0bHkuCiAqIEl0cyBjb250cm9sbGVyIHRyYW5zcG9ydCBmb2xsb3dzIHRoZSBkb2N1bWVudGVkIGZsb3cgaW4gc3BpY3lqcGVnJ3MKICogcHMxLWJhcmUtbWV0YWwgY29udHJvbGxlciBleGFtcGxlLCByYXRoZXIgdGhhbiBuMDBiUk9NJ3MgQklPUyBJUlEgaG9vay4KICovCgp0eXBlZGVmIHVuc2lnbmVkIGNoYXIgIHU4Owp0eXBlZGVmIHVuc2lnbmVkIHNob3J0IHUxNjsKdHlwZWRlZiB1bnNpZ25lZCBpbnQgICB1MzI7CgojZGVmaW5lIE1NSU84KGFkZHJlc3MpICAoKih2b2xhdGlsZSB1OCAgKikoYWRkcmVzcykpCiNkZWZpbmUgTU1JTzE2KGFkZHJlc3MpICgqKHZvbGF0aWxlIHUxNiAqKShhZGRyZXNzKSkKI2RlZmluZSBNTUlPMzIoYWRkcmVzcykgKCoodm9sYXRpbGUgdTMyICopKGFkZHJlc3MpKQoKI2RlZmluZSBHUFVfR1AwIE1NSU8zMigweDFmODAxODEwKQojZGVmaW5lIEdQVV9HUDEgTU1JTzMyKDB4MWY4MDE4MTQpCgojZGVmaW5lIFNJTzBfREFUQSBNTUlPOCgweDFmODAxMDQwKQojZGVmaW5lIFNJTzBfU1RBVCBNTUlPMTYoMHgxZjgwMTA0NCkKI2RlZmluZSBTSU8wX01PREUgTU1JTzE2KDB4MWY4MDEwNDgpCiNkZWZpbmUgU0lPMF9DVFJMIE1NSU8xNigweDFmODAxMDRhKQojZGVmaW5lIFNJTzBfQkFVRCBNTUlPMTYoMHgxZjgwMTA0ZSkKI2RlZmluZSBJUlFfU1RBVCAgTU1JTzE2KDB4MWY4MDEwNzApCgojZGVmaW5lIFNJT19TVEFUX1RYX05PVF9GVUxMIDB4MDAwMQojZGVmaW5lIFNJT19TVEFUX1JYX05PVF9FTVBUWSAweDAwMDIKI2RlZmluZSBJUlFfU0lPMCAgICAgICAgICAgICAgMHgwMDgwCgojZGVmaW5lIFNJT19DVFJMX1RYX0VOQUJMRSAgICAgIDB4MDAwMQojZGVmaW5lIFNJT19DVFJMX0RUUiAgICAgICAgICAgIDB4MDAwMgojZGVmaW5lIFNJT19DVFJMX1JYX0VOQUJMRSAgICAgIDB4MDAwNAojZGVmaW5lIFNJT19DVFJMX0FDS05PV0xFREdFICAgIDB4MDAxMAojZGVmaW5lIFNJT19DVFJMX1JFU0VUICAgICAgICAgIDB4MDA0MAojZGVmaW5lIFNJT19DVFJMX0RTUl9JUlFfRU5BQkxFIDB4MTAwMAoKI2RlZmluZSBQQURfU0VMRUNUIDB4MDAwMQojZGVmaW5lIFBBRF9TVEFSVCAgMHgwMDA4CiNkZWZpbmUgUEFEX1VQICAgICAweDAwMTAKI2RlZmluZSBQQURfUklHSFQgIDB4MDAyMAojZGVmaW5lIFBBRF9ET1dOICAgMHgwMDQwCiNkZWZpbmUgUEFEX0xFRlQgICAweDAwODAKI2RlZmluZSBQQURfQ1JPU1MgIDB4NDAwMAoKI2RlZmluZSBTQ1JFRU5fV0lEVEggIDMyMAojZGVmaW5lIFNDUkVFTl9IRUlHSFQgMjQwCgovKiBSR0IgaXMgc3RvcmVkIGJ5IEdQMCBhcyBsaXR0bGUtZW5kaWFuIDB4MDBCQkdHUlIuICovCiNkZWZpbmUgUkdCKHIsIGcsIGIpICgodTMyKSAocikgfCAoKHUzMikgKGcpIDw8IDgpIHwgKCh1MzIpIChiKSA8PCAxNikpCgpzdGF0aWMgaW50IHBhZ2U7CnN0YXRpYyBpbnQgbWVudUl0ZW07CnN0YXRpYyBpbnQgdmlkZW9Nb2RlOwpzdGF0aWMgaW50IGJhY2tncm91bmRNb2RlOwpzdGF0aWMgaW50IGNvbnRyb2xsZXJQcmVzZW50ID0gLTE7CnN0YXRpYyB1OCBjb250cm9sbGVyVHlwZTsKc3RhdGljIHUxNiBwcmV2aW91c0J1dHRvbnMgPSAweGZmZmY7CgpzdGF0aWMgdm9pZCBkZWxheU1pY3Jvc2Vjb25kcyhpbnQgbWljcm9zZWNvbmRzKSB7CgkvKiAzNCBzaG9ydCBpdGVyYXRpb25zIGFyZSBhcHByb3hpbWF0ZWx5IG9uZSBtaWNyb3NlY29uZCBvbiB0aGUgUjMwMDBBLiAqLwoJdm9sYXRpbGUgaW50IGNvdW50ID0gbWljcm9zZWNvbmRzICogMTc7Cgl3aGlsZSAoY291bnQtLSA+IDApCgkJX19hc21fXyB2b2xhdGlsZSgibm9wIik7Cn0KCnN0YXRpYyB2b2lkIHdhaXRHUDAodm9pZCkgewoJd2hpbGUgKCEoR1BVX0dQMSAmICgxdSA8PCAyNikpKQoJCV9fYXNtX18gdm9sYXRpbGUoIiIpOwp9CgpzdGF0aWMgdm9pZCBncDAodTMyIGNvbW1hbmQpIHsKCXdhaXRHUDAoKTsKCUdQVV9HUDAgPSBjb21tYW5kOwp9CgpzdGF0aWMgdm9pZCBmaWxsUmVjdChpbnQgeCwgaW50IHksIGludCB3aWR0aCwgaW50IGhlaWdodCwgdTMyIGNvbG9yKSB7CglncDAoMHgwMjAwMDAwMCB8IGNvbG9yKTsKCWdwMCgodTMyKSB4IHwgKCh1MzIpIHkgPDwgMTYpKTsKCWdwMCgodTMyKSB3aWR0aCB8ICgodTMyKSBoZWlnaHQgPDwgMTYpKTsKfQoKc3RhdGljIHZvaWQgZHJhd0Jsb2NrKGludCB4LCBpbnQgeSwgaW50IHNjYWxlLCB1MzIgY29sb3IpIHsKCWdwMCgweDYwMDAwMDAwIHwgY29sb3IpOwoJZ3AwKCh1MzIpIHggfCAoKHUzMikgeSA8PCAxNikpOwoJZ3AwKCh1MzIpIHNjYWxlIHwgKCh1MzIpIHNjYWxlIDw8IDE2KSk7Cn0KCnN0YXRpYyB2b2lkIGluaXRHUFUodm9pZCkgewoJR1BVX0dQMSA9IDB4MDAwMDAwMDA7IC8qIFJlc2V0IEdQVS4gKi8KCUdQVV9HUDEgPSAweDA1MDAwMDAwOyAvKiBEaXNwbGF5IFZSQU0gb3JpZ2luLiAqLwoJR1BVX0dQMSA9IDB4MDZjNTgyNTg7IC8qIEhvcml6b250YWwgZGlzcGxheSByYW5nZSBmb3IgMzIwIHBpeGVscy4gKi8KCUdQVV9HUDEgPSAweDA3MDQwMDEwOyAvKiBOVFNDIHZlcnRpY2FsIHJhbmdlLiAqLwoJR1BVX0dQMSA9IDB4MDgwMDAwMDE7IC8qIDMyMHgyNDAsIDE1LWJpdCwgTlRTQy4gKi8KCUdQVV9HUDEgPSAweDAzMDAwMDAwOyAvKiBFbmFibGUgZGlzcGxheS4gKi8KCglncDAoMHhlMTAwMDAwMCk7IC8qIERyYXcgbW9kZS4gKi8KCWdwMCgweGUzMDAwMDAwKTsgLyogRHJhdyBhcmVhIHRvcC1sZWZ0LiAqLwoJZ3AwKDB4ZTQwM2JkM2YpOyAvKiBEcmF3IGFyZWEgYm90dG9tLXJpZ2h0ICgzMTksIDIzOSkuICovCglncDAoMHhlNTAwMDAwMCk7IC8qIERyYXcgb2Zmc2V0LiAqLwp9CgpzdGF0aWMgdm9pZCBpbml0Q29udHJvbGxlckJ1cyh2b2lkKSB7CgkvKiBTYW1lIFNJTzAgZm9ybWF0LCBjbG9jayBhbmQgQUNLIHBvbGljeSBhcyBwczEtYmFyZS1tZXRhbCdzIGV4YW1wbGUuICovCglTSU8wX0NUUkwgPSBTSU9fQ1RSTF9SRVNFVDsKCVNJTzBfTU9ERSA9IDB4MDAwZDsgLyogOCBiaXRzLCBubyBwYXJpdHksIGRpdmlzb3IgMS4gKi8KCVNJTzBfQkFVRCA9IDEzNTsgICAgLyogMzMsODY4LDgwMCAvIDI1MCwwMDAgcm91bmRlZC4gKi8KCVNJTzBfQ1RSTCA9IFNJT19DVFJMX1RYX0VOQUJMRSB8IFNJT19DVFJMX1JYX0VOQUJMRSB8CgkJU0lPX0NUUkxfRFNSX0lSUV9FTkFCTEU7Cn0KCnN0YXRpYyBpbnQgd2FpdEZvckFja25vd2xlZGdlKHZvaWQpIHsKCWludCB0aW1lb3V0OwoJZm9yICh0aW1lb3V0ID0gMDsgdGltZW91dCA8IDEyOyB0aW1lb3V0KyspIHsKCQlpZiAoSVJRX1NUQVQgJiBJUlFfU0lPMCkgewoJCQlJUlFfU1RBVCA9ICh1MTYpIH5JUlFfU0lPMDsKCQkJU0lPMF9DVFJMIHw9IFNJT19DVFJMX0FDS05PV0xFREdFOwoJCQlyZXR1cm4gMTsKCQl9CgkJZGVsYXlNaWNyb3NlY29uZHMoMTApOwoJfQoJcmV0dXJuIDA7Cn0KCnN0YXRpYyB1OCBleGNoYW5nZUJ5dGUodTggdmFsdWUpIHsKCXdoaWxlICghKFNJTzBfU1RBVCAmIFNJT19TVEFUX1RYX05PVF9GVUxMKSkKCQlfX2FzbV9fIHZvbGF0aWxlKCIiKTsKCVNJTzBfREFUQSA9IHZhbHVlOwoJd2hpbGUgKCEoU0lPMF9TVEFUICYgU0lPX1NUQVRfUlhfTk9UX0VNUFRZKSkKCQlfX2FzbV9fIHZvbGF0aWxlKCIiKTsKCXJldHVybiBTSU8wX0RBVEE7Cn0KCnN0YXRpYyBpbnQgcG9sbENvbnRyb2xsZXIodTE2ICpidXR0b25zLCB1OCAqdHlwZSkgewoJdTggcmVzcG9uc2VbNF07CglpbnQgaW5kZXg7CgoJLyogQXNzZXJ0IC9DUyAoRFRSKSwgdGhlbiBsZXQgdGhlIGNvbnRyb2xsZXIgc2V0dGxlIGJlZm9yZSBhZGRyZXNzIGJ5dGUuICovCglJUlFfU1RBVCA9ICh1MTYpIH5JUlFfU0lPMDsKCVNJTzBfQ1RSTCA9IFNJT19DVFJMX1RYX0VOQUJMRSB8IFNJT19DVFJMX1JYX0VOQUJMRSB8CgkJU0lPX0NUUkxfRFNSX0lSUV9FTkFCTEUgfCBTSU9fQ1RSTF9EVFI7CglkZWxheU1pY3Jvc2Vjb25kcyg2MCk7CglTSU8wX0RBVEEgPSAweDAxOwoJaWYgKCF3YWl0Rm9yQWNrbm93bGVkZ2UoKSkKCQlnb3RvIG5vX2NvbnRyb2xsZXI7CgoJLyogRGlzY2FyZCB0aGUgYWRkcmVzcyByZXBseSBhbmQgY29sbGVjdCBhIHN0YW5kYXJkIDB4NDIgcG9sbCByZXNwb25zZS4gKi8KCXdoaWxlIChTSU8wX1NUQVQgJiBTSU9fU1RBVF9SWF9OT1RfRU1QVFkpCgkJKHZvaWQpIFNJTzBfREFUQTsKCglyZXNwb25zZVswXSA9IGV4Y2hhbmdlQnl0ZSgweDQyKTsKCWlmICghd2FpdEZvckFja25vd2xlZGdlKCkpCgkJZ290byBub19jb250cm9sbGVyOwoJcmVzcG9uc2VbMV0gPSBleGNoYW5nZUJ5dGUoMHgwMCk7CglpZiAoIXdhaXRGb3JBY2tub3dsZWRnZSgpKQoJCWdvdG8gbm9fY29udHJvbGxlcjsKCXJlc3BvbnNlWzJdID0gZXhjaGFuZ2VCeXRlKDB4MDApOwoJaWYgKCF3YWl0Rm9yQWNrbm93bGVkZ2UoKSkKCQlnb3RvIG5vX2NvbnRyb2xsZXI7CglyZXNwb25zZVszXSA9IGV4Y2hhbmdlQnl0ZSgweDAwKTsKCSh2b2lkKSB3YWl0Rm9yQWNrbm93bGVkZ2UoKTsKCgkvKiAweDR4IGRpZ2l0YWwsIDB4NXggYW5hbG9nIHN0aWNrIGFuZCAweDd4IER1YWxTaG9jayBhcmUgYWNjZXB0ZWQuICovCglpZiAoKHJlc3BvbnNlWzBdICYgMHhmMCkgPCAweDQwKQoJCWdvdG8gbm9fY29udHJvbGxlcjsKCSp0eXBlID0gcmVzcG9uc2VbMF07CgkqYnV0dG9ucyA9ICh1MTYpIHJlc3BvbnNlWzJdIHwgKCh1MTYpIHJlc3BvbnNlWzNdIDw8IDgpOwoKCWRlbGF5TWljcm9zZWNvbmRzKDYwKTsKCVNJTzBfQ1RSTCA9IFNJT19DVFJMX1RYX0VOQUJMRSB8IFNJT19DVFJMX1JYX0VOQUJMRSB8CgkJU0lPX0NUUkxfRFNSX0lSUV9FTkFCTEU7CglyZXR1cm4gMTsKCm5vX2NvbnRyb2xsZXI6Cglmb3IgKGluZGV4ID0gMDsgaW5kZXggPCA4ICYmIChTSU8wX1NUQVQgJiBTSU9fU1RBVF9SWF9OT1RfRU1QVFkpOyBpbmRleCsrKQoJCSh2b2lkKSBTSU8wX0RBVEE7CglTSU8wX0NUUkwgPSBTSU9fQ1RSTF9UWF9FTkFCTEUgfCBTSU9fQ1RSTF9SWF9FTkFCTEUgfAoJCVNJT19DVFJMX0RTUl9JUlFfRU5BQkxFOwoJcmV0dXJuIDA7Cn0KCi8qIEEgY29tcGFjdCA1eDcsIHVwcGVyY2FzZS1vbmx5IGRpc3BsYXkgZm9udC4gRWFjaCByb3cgaXMgZml2ZSBsb3cgYml0cy4gKi8Kc3RhdGljIHU4IGdseXBoUm93KGNoYXIgY2hhcmFjdGVyLCBpbnQgcm93KSB7CglzdGF0aWMgY29uc3QgdTggbGV0dGVyc1syNl1bN10gPSB7CgkJezE0LDE3LDE3LDMxLDE3LDE3LDE3fSwgezMwLDE3LDE3LDMwLDE3LDE3LDMwfSwKCQl7MTUsMTYsMTYsMTYsMTYsMTYsMTV9LCB7MzAsMTcsMTcsMTcsMTcsMTcsMzB9LAoJCXszMSwxNiwxNiwzMCwxNiwxNiwzMX0sIHszMSwxNiwxNiwzMCwxNiwxNiwxNn0sCgkJezE1LDE2LDE2LDIzLDE3LDE3LDE1fSwgezE3LDE3LDE3LDMxLDE3LDE3LDE3fSwKCQl7MzEsNCw0LDQsNCw0LDMxfSwgezcsMiwyLDIsMiwxOCwxMn0sCgkJezE3LDE4LDIwLDI0LDIwLDE4LDE3fSwgezE2LDE2LDE2LDE2LDE2LDE2LDMxfSwKCQl7MTcsMjcsMjEsMjEsMTcsMTcsMTd9LCB7MTcsMjUsMjEsMTksMTcsMTcsMTd9LAoJCXsxNCwxNywxNywxNywxNywxNywxNH0sIHszMCwxNywxNywzMCwxNiwxNiwxNn0sCgkJezE0LDE3LDE3LDE3LDIxLDE4LDEzfSwgezMwLDE3LDE3LDMwLDIwLDE4LDE3fSwKCQl7MTUsMTYsMTYsMTQsMSwxLDMwfSwgezMxLDQsNCw0LDQsNCw0fSwKCQl7MTcsMTcsMTcsMTcsMTcsMTcsMTR9LCB7MTcsMTcsMTcsMTcsMTcsMTAsNH0sCgkJezE3LDE3LDE3LDIxLDIxLDIxLDEwfSwgezE3LDE3LDEwLDQsMTAsMTcsMTd9LAoJCXsxNywxNywxMCw0LDQsNCw0fSwgezMxLDEsMiw0LDgsMTYsMzF9Cgl9OwoJc3RhdGljIGNvbnN0IHU4IGRpZ2l0c1sxMF1bN10gPSB7CgkJezE0LDE3LDE5LDIxLDI1LDE3LDE0fSwgezQsMTIsNCw0LDQsNCwxNH0sCgkJezE0LDE3LDEsMiw0LDgsMzF9LCB7MzAsMSwxLDE0LDEsMSwzMH0sCgkJezIsNiwxMCwxOCwzMSwyLDJ9LCB7MzEsMTYsMzAsMSwxLDE3LDE0fSwKCQl7Niw4LDE2LDMwLDE3LDE3LDE0fSwgezMxLDEsMiw0LDgsOCw4fSwKCQl7MTQsMTcsMTcsMTQsMTcsMTcsMTR9LCB7MTQsMTcsMTcsMTUsMSwyLDI4fQoJfTsKCglpZiAoY2hhcmFjdGVyID49ICdBJyAmJiBjaGFyYWN0ZXIgPD0gJ1onKQoJCXJldHVybiBsZXR0ZXJzW2NoYXJhY3RlciAtICdBJ11bcm93XTsKCWlmIChjaGFyYWN0ZXIgPj0gJzAnICYmIGNoYXJhY3RlciA8PSAnOScpCgkJcmV0dXJuIGRpZ2l0c1tjaGFyYWN0ZXIgLSAnMCddW3Jvd107CglpZiAoY2hhcmFjdGVyID09ICc6JykKCQlyZXR1cm4gKHJvdyA9PSAyIHx8IHJvdyA9PSA1KSA/IDQgOiAwOwoJaWYgKGNoYXJhY3RlciA9PSAnLScpCgkJcmV0dXJuIHJvdyA9PSAzID8gMTQgOiAwOwoJaWYgKGNoYXJhY3RlciA9PSAnLycpCgkJcmV0dXJuIDF1IDw8ICg0IC0gKChyb3cgKiA1KSAvIDcpKTsKCWlmIChjaGFyYWN0ZXIgPT0gJz4nKQoJCXJldHVybiAocm93ID09IDEgfHwgcm93ID09IDUpID8gMiA6IChyb3cgPT0gMiB8fCByb3cgPT0gNCkgPyA0IDogcm93ID09IDMgPyA4IDogMDsKCWlmIChjaGFyYWN0ZXIgPT0gJy4nKQoJCXJldHVybiByb3cgPT0gNiA/IDQgOiAwOwoJcmV0dXJuIDA7Cn0KCnN0YXRpYyB2b2lkIGRyYXdDaGFyKGludCB4LCBpbnQgeSwgY2hhciBjaGFyYWN0ZXIsIGludCBzY2FsZSwgdTMyIGNvbG9yKSB7CglpbnQgcm93LCBjb2x1bW47Cglmb3IgKHJvdyA9IDA7IHJvdyA8IDc7IHJvdysrKSB7CgkJdTggcGl4ZWxzID0gZ2x5cGhSb3coY2hhcmFjdGVyLCByb3cpOwoJCWZvciAoY29sdW1uID0gMDsgY29sdW1uIDwgNTsgY29sdW1uKyspIHsKCQkJaWYgKHBpeGVscyAmICgxdSA8PCAoNCAtIGNvbHVtbikpKQoJCQkJZHJhd0Jsb2NrKHggKyBjb2x1bW4gKiBzY2FsZSwgeSArIHJvdyAqIHNjYWxlLCBzY2FsZSwgY29sb3IpOwoJCX0KCX0KfQoKc3RhdGljIHZvaWQgZHJhd1RleHQoaW50IHgsIGludCB5LCBjb25zdCBjaGFyICp0ZXh0LCBpbnQgc2NhbGUsIHUzMiBjb2xvcikgewoJaW50IGN1cnNvciA9IHg7Cgl3aGlsZSAoKnRleHQpIHsKCQlpZiAoKnRleHQgPT0gJ1xuJykgewoJCQl5ICs9IDggKiBzY2FsZTsKCQkJY3Vyc29yID0geDsKCQl9IGVsc2UgewoJCQlkcmF3Q2hhcihjdXJzb3IsIHksICp0ZXh0LCBzY2FsZSwgY29sb3IpOwoJCQljdXJzb3IgKz0gNiAqIHNjYWxlOwoJCX0KCQl0ZXh0Kys7Cgl9Cn0KCnN0YXRpYyBjb25zdCBjaGFyICpjb250cm9sbGVyTmFtZSh2b2lkKSB7CglpZiAoY29udHJvbGxlclByZXNlbnQgPD0gMCkKCQlyZXR1cm4gIldBSVRJTkciOwoJaWYgKChjb250cm9sbGVyVHlwZSAmIDB4ZjApID09IDB4NDApCgkJcmV0dXJuICJESUdJVEFMIjsKCWlmICgoY29udHJvbGxlclR5cGUgJiAweGYwKSA9PSAweDUwKQoJCXJldHVybiAiQU5BTE9HIFNUSUNLIjsKCWlmICgoY29udHJvbGxlclR5cGUgJiAweGYwKSA9PSAweDcwKQoJCXJldHVybiAiRFVBTFNIT0NLIjsKCXJldHVybiAiVU5LTk9XTiI7Cn0KCnN0YXRpYyB2b2lkIHJlbmRlckhvbWUodm9pZCkgewoJZmlsbFJlY3QoMCwgMCwgU0NSRUVOX1dJRFRILCBTQ1JFRU5fSEVJR0hULAoJCWJhY2tncm91bmRNb2RlID8gUkdCKDEwLCAyMCwgNDApIDogUkdCKDMwLCA4LCA0NSkpOwoJZmlsbFJlY3QoMTIsIDEyLCAyOTYsIDMyLCBSR0IoMjAsIDExNSwgMTUwKSk7CglkcmF3VGV4dCgyNiwgMjAsICJOMDBCUk9NIFNUQU5EQUxPTkUiLCAyLCBSR0IoMjU1LCAyNTUsIDI1NSkpOwoJZHJhd1RleHQoMjAsIDY0LCAiQkFSRSBNRVRBTCBSVU5USU1FIiwgMiwgUkdCKDI1NSwgMjIwLCAxMTApKTsKCWRyYXdUZXh0KDIwLCA5MiwgIlBBRCAxOiIsIDIsIFJHQigxODAsIDIzMCwgMjU1KSk7CglkcmF3VGV4dCgxMDQsIDkyLCBjb250cm9sbGVyTmFtZSgpLCAyLCBSR0IoMjU1LCAyNTUsIDI1NSkpOwoJZHJhd1RleHQoMjAsIDEyMiwgIlNFTEVDVDogU0VUVElOR1MiLCAyLCBSR0IoMjU1LCAyNTUsIDI1NSkpOwoJZHJhd1RleHQoMjAsIDE0NiwgIlNUQVJUOiBESVNDIFNFUlZJQ0VTIiwgMiwgUkdCKDI1NSwgMjU1LCAyNTUpKTsKCWRyYXdUZXh0KDIwLCAxODgsICJJTlBVVCBJUyBESVJFQ1QgU0lPMCIsIDIsIFJHQigxMzAsIDI1NSwgMTY1KSk7Cn0KCnN0YXRpYyB2b2lkIHJlbmRlck1lbnUodm9pZCkgewoJc3RhdGljIGNvbnN0IGNoYXIgKmNvbnN0IGl0ZW1zW10gPSB7CgkJIlZJREVPOiBBVVRPIiwgIkJBQ0tHUk9VTkQ6IFBMQVNNQSIsICJDT05UUk9MTEVSOiBQT1JUIDEiLAoJCSJESVNDIFNFUlZJQ0VTIiwgIkhBUkRXQVJFIFRPT0xTIiwgIlJFVFVSTiIKCX07CglpbnQgaW5kZXg7CglmaWxsUmVjdCgwLCAwLCBTQ1JFRU5fV0lEVEgsIFNDUkVFTl9IRUlHSFQsIFJHQig4LCAyNCwgNDApKTsKCWRyYXdUZXh0KDIwLCAxOCwgIk4wMEJST00gU0VUVElOR1MiLCAyLCBSR0IoMjU1LCAyMjAsIDExMCkpOwoJZm9yIChpbmRleCA9IDA7IGluZGV4IDwgNjsgaW5kZXgrKykgewoJCXUzMiBjb2xvciA9IGluZGV4ID09IG1lbnVJdGVtID8gUkdCKDkwLCAyNTUsIDE4MCkgOiBSR0IoMjU1LCAyNTUsIDI1NSk7CgkJaWYgKGluZGV4ID09IDAgJiYgdmlkZW9Nb2RlID09IDEpCgkJCWRyYXdUZXh0KDQ0LCA1NCArIGluZGV4ICogMjQsICJWSURFTzogTlRTQyIsIDIsIGNvbG9yKTsKCQllbHNlIGlmIChpbmRleCA9PSAwICYmIHZpZGVvTW9kZSA9PSAyKQoJCQlkcmF3VGV4dCg0NCwgNTQgKyBpbmRleCAqIDI0LCAiVklERU86IFBBTCIsIDIsIGNvbG9yKTsKCQllbHNlIGlmIChpbmRleCA9PSAxICYmIGJhY2tncm91bmRNb2RlKQoJCQlkcmF3VGV4dCg0NCwgNTQgKyBpbmRleCAqIDI0LCAiQkFDS0dST1VORDogQkFSUyIsIDIsIGNvbG9yKTsKCQllbHNlCgkJCWRyYXdUZXh0KDQ0LCA1NCArIGluZGV4ICogMjQsIGl0ZW1zW2luZGV4XSwgMiwgY29sb3IpOwoJCWlmIChpbmRleCA9PSBtZW51SXRlbSkKCQkJZHJhd1RleHQoMjQsIDU0ICsgaW5kZXggKiAyNCwgIj4iLCAyLCBjb2xvcik7Cgl9CglkcmF3VGV4dCgyMCwgMjEwLCAiRFBBRDogTU9WRSAgWDogQ0hBTkdFIiwgMSwgUkdCKDE4MCwgMjMwLCAyNTUpKTsKfQoKc3RhdGljIHZvaWQgcmVuZGVySW5mbyhjb25zdCBjaGFyICp0aXRsZSwgY29uc3QgY2hhciAqbGluZTEsIGNvbnN0IGNoYXIgKmxpbmUyKSB7CglmaWxsUmVjdCgwLCAwLCBTQ1JFRU5fV0lEVEgsIFNDUkVFTl9IRUlHSFQsIFJHQig0NSwgMTIsIDI4KSk7CglkcmF3VGV4dCgyMCwgMjQsIHRpdGxlLCAyLCBSR0IoMjU1LCAyMjAsIDExMCkpOwoJZHJhd1RleHQoMjAsIDg0LCBsaW5lMSwgMiwgUkdCKDI1NSwgMjU1LCAyNTUpKTsKCWRyYXdUZXh0KDIwLCAxMTYsIGxpbmUyLCAyLCBSR0IoMjU1LCAyNTUsIDI1NSkpOwoJZHJhd1RleHQoMjAsIDE5MCwgIlNFTEVDVCBPUiBTVEFSVDogUkVUVVJOIiwgMSwgUkdCKDEzMCwgMjU1LCAxNjUpKTsKfQoKc3RhdGljIHZvaWQgcmVuZGVyKHZvaWQpIHsKCWlmIChwYWdlID09IDApCgkJcmVuZGVySG9tZSgpOwoJZWxzZSBpZiAocGFnZSA9PSAxKQoJCXJlbmRlck1lbnUoKTsKCWVsc2UgaWYgKHBhZ2UgPT0gMikKCQlyZW5kZXJJbmZvKCJESVNDIFNFUlZJQ0VTIiwgIkNEIEJPT1QgUE9SVCBJTiBQUk9HUkVTUyIsICJOTyBDQVJUUklER0UgSlVNUCBVU0VEIik7CgllbHNlCgkJcmVuZGVySW5mbygiSEFSRFdBUkUgVE9PTFMiLCAiRUVQUk9NIEFORCBYUExPUkVSIE5FRUQgQ0FSVCIsICJOT1QgVE9VQ0hFRCBJTiBFTVVMQVRPUiIpOwp9CgpzdGF0aWMgdm9pZCBoYW5kbGVQcmVzc2VkKHUxNiBwcmVzc2VkKSB7CglpZiAocGFnZSA9PSAwKSB7CgkJaWYgKHByZXNzZWQgJiBQQURfU0VMRUNUKQoJCQlwYWdlID0gMTsKCQllbHNlIGlmIChwcmVzc2VkICYgUEFEX1NUQVJUKQoJCQlwYWdlID0gMjsKCQlyZXR1cm47Cgl9CglpZiAocGFnZSA9PSAxKSB7CgkJaWYgKHByZXNzZWQgJiBQQURfVVApCgkJCW1lbnVJdGVtID0gbWVudUl0ZW0gPyBtZW51SXRlbSAtIDEgOiA1OwoJCWlmIChwcmVzc2VkICYgUEFEX0RPV04pCgkJCW1lbnVJdGVtID0gbWVudUl0ZW0gPCA1ID8gbWVudUl0ZW0gKyAxIDogMDsKCQlpZiAocHJlc3NlZCAmIChQQURfU0VMRUNUIHwgUEFEX1NUQVJUKSkKCQkJcGFnZSA9IDA7CgkJaWYgKHByZXNzZWQgJiBQQURfQ1JPU1MpIHsKCQkJaWYgKG1lbnVJdGVtID09IDApCgkJCQl2aWRlb01vZGUgPSAodmlkZW9Nb2RlICsgMSkgJSAzOwoJCQllbHNlIGlmIChtZW51SXRlbSA9PSAxKQoJCQkJYmFja2dyb3VuZE1vZGUgXj0gMTsKCQkJZWxzZSBpZiAobWVudUl0ZW0gPT0gMykKCQkJCXBhZ2UgPSAyOwoJCQllbHNlIGlmIChtZW51SXRlbSA9PSA0KQoJCQkJcGFnZSA9IDM7CgkJCWVsc2UgaWYgKG1lbnVJdGVtID09IDUpCgkJCQlwYWdlID0gMDsKCQl9CgkJcmV0dXJuOwoJfQoJaWYgKHByZXNzZWQgJiAoUEFEX1NFTEVDVCB8IFBBRF9TVEFSVCB8IFBBRF9DUk9TUykpCgkJcGFnZSA9IDA7Cn0KCmludCBtYWluKHZvaWQpIHsKCWludCBjb25uZWN0ZWQ7Cgl1MTYgYnV0dG9uczsKCglpbml0R1BVKCk7Cglpbml0Q29udHJvbGxlckJ1cygpOwoJcmVuZGVyKCk7CgoJZm9yICg7OykgewoJCWNvbm5lY3RlZCA9IHBvbGxDb250cm9sbGVyKCZidXR0b25zLCAmY29udHJvbGxlclR5cGUpOwoJCWlmIChjb25uZWN0ZWQgIT0gY29udHJvbGxlclByZXNlbnQpIHsKCQkJY29udHJvbGxlclByZXNlbnQgPSBjb25uZWN0ZWQ7CgkJCXByZXZpb3VzQnV0dG9ucyA9IDB4ZmZmZjsKCQkJcmVuZGVyKCk7CgkJfQoJCWlmIChjb25uZWN0ZWQpIHsKCQkJdTE2IHByZXNzZWQgPSBwcmV2aW91c0J1dHRvbnMgJiAodTE2KSB+YnV0dG9uczsKCQkJcHJldmlvdXNCdXR0b25zID0gYnV0dG9uczsKCQkJaWYgKHByZXNzZWQpIHsKCQkJCWhhbmRsZVByZXNzZWQocHJlc3NlZCk7CgkJCQlyZW5kZXIoKTsKCQkJfQoJCX0KCQlkZWxheU1pY3Jvc2Vjb25kcygxMDAwKTsKCX0KfQo=
+/*
+ * n00bROM standalone bare-metal runtime.
+ *
+ * This target intentionally talks to the PS1 GPU and SIO0 registers directly.
+ * Its controller transport follows the documented flow in spicyjpeg's
+ * ps1-bare-metal controller example, rather than n00bROM's BIOS IRQ hook.
+ */
+
+typedef unsigned char  u8;
+typedef unsigned short u16;
+typedef unsigned int   u32;
+
+#define MMIO8(address)  (*(volatile u8  *)(address))
+#define MMIO16(address) (*(volatile u16 *)(address))
+#define MMIO32(address) (*(volatile u32 *)(address))
+
+#define GPU_GP0 MMIO32(0x1f801810)
+#define GPU_GP1 MMIO32(0x1f801814)
+
+#define SIO0_DATA MMIO8(0x1f801040)
+#define SIO0_STAT MMIO16(0x1f801044)
+#define SIO0_MODE MMIO16(0x1f801048)
+#define SIO0_CTRL MMIO16(0x1f80104a)
+#define SIO0_BAUD MMIO16(0x1f80104e)
+#define IRQ_STAT  MMIO16(0x1f801070)
+
+#define SIO_STAT_TX_NOT_FULL 0x0001
+#define SIO_STAT_RX_NOT_EMPTY 0x0002
+#define IRQ_SIO0              0x0080
+
+#define SIO_CTRL_TX_ENABLE      0x0001
+#define SIO_CTRL_DTR            0x0002
+#define SIO_CTRL_RX_ENABLE      0x0004
+#define SIO_CTRL_ACKNOWLEDGE    0x0010
+#define SIO_CTRL_RESET          0x0040
+#define SIO_CTRL_DSR_IRQ_ENABLE 0x1000
+
+#define PAD_SELECT 0x0001
+#define PAD_START  0x0008
+#define PAD_UP     0x0010
+#define PAD_RIGHT  0x0020
+#define PAD_DOWN   0x0040
+#define PAD_LEFT   0x0080
+#define PAD_CROSS  0x4000
+
+#define SCREEN_WIDTH  320
+#define SCREEN_HEIGHT 240
+
+/* RGB is stored by GP0 as little-endian 0x00BBGGRR. */
+#define RGB(r, g, b) ((u32) (r) | ((u32) (g) << 8) | ((u32) (b) << 16))
+
+static int page;
+static int menuItem;
+static int videoMode;
+static int backgroundMode;
+static int controllerPresent = -1;
+static u8 controllerType;
+static u16 previousButtons = 0xffff;
+
+static void delayMicroseconds(int microseconds) {
+	/* 34 short iterations are approximately one microsecond on the R3000A. */
+	volatile int count = microseconds * 17;
+	while (count-- > 0)
+		__asm__ volatile("nop");
+}
+
+static void waitGP0(void) {
+	while (!(GPU_GP1 & (1u << 26)))
+		__asm__ volatile("");
+}
+
+static void gp0(u32 command) {
+	waitGP0();
+	GPU_GP0 = command;
+}
+
+static void fillRect(int x, int y, int width, int height, u32 color) {
+	gp0(0x02000000 | color);
+	gp0((u32) x | ((u32) y << 16));
+	gp0((u32) width | ((u32) height << 16));
+}
+
+static void drawBlock(int x, int y, int scale, u32 color) {
+	gp0(0x60000000 | color);
+	gp0((u32) x | ((u32) y << 16));
+	gp0((u32) scale | ((u32) scale << 16));
+}
+
+static void initGPU(void) {
+	GPU_GP1 = 0x00000000; /* Reset GPU. */
+	GPU_GP1 = 0x05000000; /* Display VRAM origin. */
+	GPU_GP1 = 0x06c58258; /* Horizontal display range for 320 pixels. */
+	GPU_GP1 = 0x07040010; /* NTSC vertical range. */
+	GPU_GP1 = 0x08000001; /* 320x240, 15-bit, NTSC. */
+	GPU_GP1 = 0x03000000; /* Enable display. */
+
+	gp0(0xe1000000); /* Draw mode. */
+	gp0(0xe3000000); /* Draw area top-left. */
+	gp0(0xe403bd3f); /* Draw area bottom-right (319, 239). */
+	gp0(0xe5000000); /* Draw offset. */
+}
+
+static void initControllerBus(void) {
+	/* Same SIO0 format, clock and ACK policy as ps1-bare-metal's example. */
+	SIO0_CTRL = SIO_CTRL_RESET;
+	SIO0_MODE = 0x000d; /* 8 bits, no parity, divisor 1. */
+	SIO0_BAUD = 135;    /* 33,868,800 / 250,000 rounded. */
+	SIO0_CTRL = SIO_CTRL_TX_ENABLE | SIO_CTRL_RX_ENABLE |
+		SIO_CTRL_DSR_IRQ_ENABLE;
+}
+
+static int waitForAcknowledge(void) {
+	int timeout;
+	for (timeout = 0; timeout < 12; timeout++) {
+		if (IRQ_STAT & IRQ_SIO0) {
+			IRQ_STAT = (u16) ~IRQ_SIO0;
+			SIO0_CTRL |= SIO_CTRL_ACKNOWLEDGE;
+			return 1;
+		}
+		delayMicroseconds(10);
+	}
+	return 0;
+}
+
+static u8 exchangeByte(u8 value) {
+	while (!(SIO0_STAT & SIO_STAT_TX_NOT_FULL))
+		__asm__ volatile("");
+	SIO0_DATA = value;
+	while (!(SIO0_STAT & SIO_STAT_RX_NOT_EMPTY))
+		__asm__ volatile("");
+	return SIO0_DATA;
+}
+
+static int pollController(u16 *buttons, u8 *type) {
+	u8 response[4];
+	int index;
+
+	/* Assert /CS (DTR), then let the controller settle before address byte. */
+	IRQ_STAT = (u16) ~IRQ_SIO0;
+	SIO0_CTRL = SIO_CTRL_TX_ENABLE | SIO_CTRL_RX_ENABLE |
+		SIO_CTRL_DSR_IRQ_ENABLE | SIO_CTRL_DTR;
+	delayMicroseconds(60);
+	SIO0_DATA = 0x01;
+	if (!waitForAcknowledge())
+		goto no_controller;
+
+	/* Discard the address reply and collect a standard 0x42 poll response. */
+	while (SIO0_STAT & SIO_STAT_RX_NOT_EMPTY)
+		(void) SIO0_DATA;
+
+	response[0] = exchangeByte(0x42);
+	if (!waitForAcknowledge())
+		goto no_controller;
+	response[1] = exchangeByte(0x00);
+	if (!waitForAcknowledge())
+		goto no_controller;
+	response[2] = exchangeByte(0x00);
+	if (!waitForAcknowledge())
+		goto no_controller;
+	response[3] = exchangeByte(0x00);
+	(void) waitForAcknowledge();
+
+	/* 0x4x digital, 0x5x analog stick and 0x7x DualShock are accepted. */
+	if ((response[0] & 0xf0) < 0x40)
+		goto no_controller;
+	*type = response[0];
+	*buttons = (u16) response[2] | ((u16) response[3] << 8);
+
+	delayMicroseconds(60);
+	SIO0_CTRL = SIO_CTRL_TX_ENABLE | SIO_CTRL_RX_ENABLE |
+		SIO_CTRL_DSR_IRQ_ENABLE;
+	return 1;
+
+no_controller:
+	for (index = 0; index < 8 && (SIO0_STAT & SIO_STAT_RX_NOT_EMPTY); index++)
+		(void) SIO0_DATA;
+	SIO0_CTRL = SIO_CTRL_TX_ENABLE | SIO_CTRL_RX_ENABLE |
+		SIO_CTRL_DSR_IRQ_ENABLE;
+	return 0;
+}
+
+/* A compact 5x7, uppercase-only display font. Each row is five low bits. */
+static u8 glyphRow(char character, int row) {
+	static const u8 letters[26][7] = {
+		{14,17,17,31,17,17,17}, {30,17,17,30,17,17,30},
+		{15,16,16,16,16,16,15}, {30,17,17,17,17,17,30},
+		{31,16,16,30,16,16,31}, {31,16,16,30,16,16,16},
+		{15,16,16,23,17,17,15}, {17,17,17,31,17,17,17},
+		{31,4,4,4,4,4,31}, {7,2,2,2,2,18,12},
+		{17,18,20,24,20,18,17}, {16,16,16,16,16,16,31},
+		{17,27,21,21,17,17,17}, {17,25,21,19,17,17,17},
+		{14,17,17,17,17,17,14}, {30,17,17,30,16,16,16},
+		{14,17,17,17,21,18,13}, {30,17,17,30,20,18,17},
+		{15,16,16,14,1,1,30}, {31,4,4,4,4,4,4},
+		{17,17,17,17,17,17,14}, {17,17,17,17,17,10,4},
+		{17,17,17,21,21,21,10}, {17,17,10,4,10,17,17},
+		{17,17,10,4,4,4,4}, {31,1,2,4,8,16,31}
+	};
+	static const u8 digits[10][7] = {
+		{14,17,19,21,25,17,14}, {4,12,4,4,4,4,14},
+		{14,17,1,2,4,8,31}, {30,1,1,14,1,1,30},
+		{2,6,10,18,31,2,2}, {31,16,30,1,1,17,14},
+		{6,8,16,30,17,17,14}, {31,1,2,4,8,8,8},
+		{14,17,17,14,17,17,14}, {14,17,17,15,1,2,28}
+	};
+
+	if (character >= 'A' && character <= 'Z')
+		return letters[character - 'A'][row];
+	if (character >= '0' && character <= '9')
+		return digits[character - '0'][row];
+	if (character == ':')
+		return (row == 2 || row == 5) ? 4 : 0;
+	if (character == '-')
+		return row == 3 ? 14 : 0;
+	if (character == '/')
+		return 1u << (4 - ((row * 5) / 7));
+	if (character == '>')
+		return (row == 1 || row == 5) ? 2 : (row == 2 || row == 4) ? 4 : row == 3 ? 8 : 0;
+	if (character == '.')
+		return row == 6 ? 4 : 0;
+	return 0;
+}
+
+static void drawChar(int x, int y, char character, int scale, u32 color) {
+	int row, column;
+	for (row = 0; row < 7; row++) {
+		u8 pixels = glyphRow(character, row);
+		for (column = 0; column < 5; column++) {
+			if (pixels & (1u << (4 - column)))
+				drawBlock(x + column * scale, y + row * scale, scale, color);
+		}
+	}
+}
+
+static void drawText(int x, int y, const char *text, int scale, u32 color) {
+	int cursor = x;
+	while (*text) {
+		if (*text == '\n') {
+			y += 8 * scale;
+			cursor = x;
+		} else {
+			drawChar(cursor, y, *text, scale, color);
+			cursor += 6 * scale;
+		}
+		text++;
+	}
+}
+
+static const char *controllerName(void) {
+	if (controllerPresent <= 0)
+		return "WAITING";
+	if ((controllerType & 0xf0) == 0x40)
+		return "DIGITAL";
+	if ((controllerType & 0xf0) == 0x50)
+		return "ANALOG STICK";
+	if ((controllerType & 0xf0) == 0x70)
+		return "DUALSHOCK";
+	return "UNKNOWN";
+}
+
+static void renderHome(void) {
+	fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT,
+		backgroundMode ? RGB(10, 20, 40) : RGB(30, 8, 45));
+	fillRect(12, 12, 296, 32, RGB(20, 115, 150));
+	drawText(26, 20, "N00BROM STANDALONE", 2, RGB(255, 255, 255));
+	drawText(20, 64, "BARE METAL RUNTIME", 2, RGB(255, 220, 110));
+	drawText(20, 92, "PAD 1:", 2, RGB(180, 230, 255));
+	drawText(104, 92, controllerName(), 2, RGB(255, 255, 255));
+	drawText(20, 122, "SELECT: SETTINGS", 2, RGB(255, 255, 255));
+	drawText(20, 146, "START: DISC SERVICES", 2, RGB(255, 255, 255));
+	drawText(20, 188, "INPUT IS DIRECT SIO0", 2, RGB(130, 255, 165));
+}
+
+static void renderMenu(void) {
+	static const char *const items[] = {
+		"VIDEO: AUTO", "BACKGROUND: PLASMA", "CONTROLLER: PORT 1",
+		"DISC SERVICES", "HARDWARE TOOLS", "RETURN"
+	};
+	int index;
+	fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, RGB(8, 24, 40));
+	drawText(20, 18, "N00BROM SETTINGS", 2, RGB(255, 220, 110));
+	for (index = 0; index < 6; index++) {
+		u32 color = index == menuItem ? RGB(90, 255, 180) : RGB(255, 255, 255);
+		if (index == 0 && videoMode == 1)
+			drawText(44, 54 + index * 24, "VIDEO: NTSC", 2, color);
+		else if (index == 0 && videoMode == 2)
+			drawText(44, 54 + index * 24, "VIDEO: PAL", 2, color);
+		else if (index == 1 && backgroundMode)
+			drawText(44, 54 + index * 24, "BACKGROUND: BARS", 2, color);
+		else
+			drawText(44, 54 + index * 24, items[index], 2, color);
+		if (index == menuItem)
+			drawText(24, 54 + index * 24, ">", 2, color);
+	}
+	drawText(20, 210, "DPAD: MOVE  X: CHANGE", 1, RGB(180, 230, 255));
+}
+
+static void renderInfo(const char *title, const char *line1, const char *line2) {
+	fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, RGB(45, 12, 28));
+	drawText(20, 24, title, 2, RGB(255, 220, 110));
+	drawText(20, 84, line1, 2, RGB(255, 255, 255));
+	drawText(20, 116, line2, 2, RGB(255, 255, 255));
+	drawText(20, 190, "SELECT OR START: RETURN", 1, RGB(130, 255, 165));
+}
+
+static void render(void) {
+	if (page == 0)
+		renderHome();
+	else if (page == 1)
+		renderMenu();
+	else if (page == 2)
+		renderInfo("DISC SERVICES", "CD BOOT PORT IN PROGRESS", "NO CARTRIDGE JUMP USED");
+	else
+		renderInfo("HARDWARE TOOLS", "EEPROM AND XPLORER NEED CART", "NOT TOUCHED IN EMULATOR");
+}
+
+static void handlePressed(u16 pressed) {
+	if (page == 0) {
+		if (pressed & PAD_SELECT)
+			page = 1;
+		else if (pressed & PAD_START)
+			page = 2;
+		return;
+	}
+	if (page == 1) {
+		if (pressed & PAD_UP)
+			menuItem = menuItem ? menuItem - 1 : 5;
+		if (pressed & PAD_DOWN)
+			menuItem = menuItem < 5 ? menuItem + 1 : 0;
+		if (pressed & (PAD_SELECT | PAD_START))
+			page = 0;
+		if (pressed & PAD_CROSS) {
+			if (menuItem == 0)
+				videoMode = (videoMode + 1) % 3;
+			else if (menuItem == 1)
+				backgroundMode ^= 1;
+			else if (menuItem == 3)
+				page = 2;
+			else if (menuItem == 4)
+				page = 3;
+			else if (menuItem == 5)
+				page = 0;
+		}
+		return;
+	}
+	if (pressed & (PAD_SELECT | PAD_START | PAD_CROSS))
+		page = 0;
+}
+
+int main(void) {
+	int connected;
+	u16 buttons;
+
+	initGPU();
+	initControllerBus();
+	render();
+
+	for (;;) {
+		connected = pollController(&buttons, &controllerType);
+		if (connected != controllerPresent) {
+			controllerPresent = connected;
+			previousButtons = 0xffff;
+			render();
+		}
+		if (connected) {
+			u16 pressed = previousButtons & (u16) ~buttons;
+			previousButtons = buttons;
+			if (pressed) {
+				handlePressed(pressed);
+				render();
+			}
+		}
+		delayMicroseconds(1000);
+	}
+}

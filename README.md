@@ -1,1 +1,121 @@
-IyBuMDBiUk9NIGJhcmUtbWV0YWwgc3RhbmRhbG9uZSBQUy1YIEVYRQoKVGhpcyByZXBvc2l0b3J5IHByb2R1Y2VzIHR3byBkaWZmZXJlbnQgUFMxIGltYWdlcyBmcm9tIHRoZSBwcm92ZW4gbjAwYlJPTQowLjMwYiBzb3VyY2U6CgotIGBuMDBicm9tLnJvbWA6IHRoZSBvcmlnaW5hbCBleHBhbnNpb24tcG9ydCBjYXJ0cmlkZ2UgZmlybXdhcmUgaW1hZ2UKICAoYHJvbWhlYWQuYmluICsgcmFtcHJvZy5iaW5gKSwgYnVpbHQgd2l0aCBLaW5nY29tJ3MgYXJtaXBzIGFzc2VtYmxlci4KLSBgbjAwYnJvbS5wc2V4ZWA6IHRoZSBzdGFuZGFsb25lIHJlbGVhc2UuIEl0IGlzIGEgbmV3IFJBTS1yZXNpZGVudCwKICBkaXJlY3QtaGFyZHdhcmUgcHJvZ3JhbSBhdCBgMHg4MDAxMDAwMGA7IGl0IGRvZXMgKipub3QqKiBleGVjdXRlIG4wMGJST00ncwogIEJJT1MgaW50ZXJydXB0IGhvb2ssIGNhcnRyaWRnZSBST00gYm9vdHN0cmFwLCBvciBleHBhbnNpb24tcG9ydCBtYXBwaW5ncy4KClRoZSBzdGFuZGFsb25lIHJ1bnRpbWUncyBHUFUgYW5kIFNJTzAgc2V0dXAgZm9sbG93cyB0aGUgcHJvdmVuIHJlZ2lzdGVyLWxldmVsCnBhdHRlcm5zIGluIFtzcGljeWpwZWcvcHMxLWJhcmUtbWV0YWxdKGh0dHBzOi8vZ2l0aHViLmNvbS9zcGljeWpwZWcvcHMxLWJhcmUtbWV0YWwpLgpJdHMgY29udHJvbGxlciB0cmFuc3BvcnQgZW5hYmxlcyBSWCwgd2FpdHMgZm9yIERTUiBhY2tub3dsZWRnZW1lbnRzIGFuZCBhY2NlcHRzCmRpZ2l0YWwsIGFuYWxvZy1zdGljayBhbmQgRHVhbFNob2NrIHJlcGx5IElEcyBvbiBjb250cm9sbGVyIHBvcnQgMS4gVGhpcyBhdm9pZHMKdGhlIGNhcnRyaWRnZS1lcmEgY29udHJvbGxlciBjb2RlIHRoYXQgY291bGQgZGlzcGxheSBhIGZyYW1lIGJ1dCBuZXZlciBhY2NlcHQKaW5wdXQgaW4gZW11bGF0b3JzLgoKIyMgRmlyc3QgYmFyZS1tZXRhbCBidWlsZAoKTG9hZCAqKm9ubHkqKiBgbjAwYnJvbS5wc2V4ZWAgZnJvbSB0aGUgY3VycmVudCBBY3Rpb25zIGFydGlmYWN0LiBJdHMgb3BlbmluZwpzY3JlZW4gcmVhZHMgYE4wMEJST00gU1RBTkRBTE9ORWAsIGBCQVJFIE1FVEFMIFJVTlRJTUVgLCBhbmQgYElOUFVUIElTIERJUkVDVApTSU8wYDsgYSBzY3JlZW4gY2FycnlpbmcgbjAwYlJPTSdzIG9yaWdpbmFsIGRpc2NsYWltZXIgaXMgdGhlIHJldGlyZWQKcmVsb2NhdGVkIHJlZmVyZW5jZSBidWlsZCwgbm90IHRoaXMgZXhlY3V0YWJsZS4KCi0gUHJlc3MgKipTRUxFQ1QqKiB0byBvcGVuIFNldHRpbmdzLgotIFByZXNzICoqU1RBUlQqKiB0byBvcGVuIHRoZSBEaXNjIFNlcnZpY2VzIHN0YXR1cyBwYWdlLgotIEluIFNldHRpbmdzLCB1c2UgdGhlICoqRC1wYWQqKiB0byBtb3ZlLCAqKkNyb3NzKiogdG8gY2hhbmdlIHRoZSBhdmFpbGFibGUKICBpbi1tZW1vcnkgdmlkZW8vYmFja2dyb3VuZCBvcHRpb25zLCBhbmQgKipTRUxFQ1QqKiBvciAqKlNUQVJUKiogdG8gcmV0dXJuLgoKVGhlIHNjcmVlbiBpbW1lZGlhdGVseSBjaGFuZ2VzIGBQQUQgMTogV0FJVElOR2AgdG8gYERJR0lUQUxgLCBgQU5BTE9HIFNUSUNLYApvciBgRFVBTFNIT0NLYCBhZnRlciBhIGNvbXBhdGlibGUgY29udHJvbGxlciBhbnN3ZXJzLiBUaGF0IGdpdmVzIGFuIGV4cGxpY2l0CmNvbnRyb2xsZXIgdHJhbnNwb3J0IGNoZWNrIGluc3RlYWQgb2YgdHJlYXRpbmcgYSBmcm96ZW4gc3BsYXNoIHNjcmVlbiBhcyBhCnN1Y2Nlc3NmdWwgYm9vdC4KCiMjIEZlYXR1cmUgY29tcGF0aWJpbGl0eQoKVGhlIHJlcXVlc3RlZCByZXdyaXRlIGhhcyB0byBkaXN0aW5ndWlzaCBjYXBhYmlsaXRpZXMgdGhhdCBiZWxvbmcgdG8gdGhlCm4wMGJST00gcHJvZ3JhbSBmcm9tIGNhcGFiaWxpdGllcyB0aGF0IHBoeXNpY2FsbHkgYmVsb25nIHRvIHRoZSBjYXJ0cmlkZ2UuCgp8IENhcGFiaWxpdHkgfCBCYXJlLW1ldGFsIEVYRSB8IE9yaWdpbmFsIGNhcnRyaWRnZSBST00gfAp8IC0tLSB8IC0tLSB8IC0tLSB8CnwgR1BVIGhvbWUvc2V0dGluZ3MgVUkgYW5kIGRpcmVjdCBjb250cm9sbGVyIHBvbGxpbmcgfCBJbXBsZW1lbnRlZCB8IEltcGxlbWVudGVkIHwKfCBWaWRlby9iYWNrZ3JvdW5kIHNldHRpbmdzIGZvciB0aGUgcnVubmluZyBzZXNzaW9uIHwgSW1wbGVtZW50ZWQgfCBJbXBsZW1lbnRlZCBhbmQgRUVQUk9NLXBlcnNpc3RlbnQgfAp8IENEIHNlcnZpY2VzIHwgRGVkaWNhdGVkIGRpcmVjdC1DRCBwb3J0IGluIHByb2dyZXNzIHwgSW1wbGVtZW50ZWQgdGhyb3VnaCB0aGUgaW50ZXJjZXB0ZWQgQklPUyBib290c3RyYXAgfAp8IFNlcmlhbCBQUy1YIEVYRSBsb2FkZXIgYW5kIHNlcmlhbCBUVFkgfCBEaXJlY3QtU0lPMSBwb3J0IGluIHByb2dyZXNzIHwgSW1wbGVtZW50ZWQgfAp8IEV4Y2VwdGlvbiBkaXNwbGF5IHwgQmFyZSBleGNlcHRpb24gaGFuZGxlciBwb3J0IGluIHByb2dyZXNzIHwgSW1wbGVtZW50ZWQgdGhyb3VnaCBCSU9TIGhvb2tzIHwKfCBFRVBST00gaWRlbnRpZmljYXRpb24sIHNhdmUgc2V0dGluZ3MgYW5kIGZsYXNoZXIgfCBSZXF1aXJlcyBwaHlzaWNhbCBleHBhbnNpb24tcG9ydCBFRVBST00gfCBJbXBsZW1lbnRlZCB3aXRoIHN1cHBvcnRlZCBoYXJkd2FyZSB8CnwgWHBsb3JlciB1cGxvYWQvVFRZL1BDRFJWIHwgUmVxdWlyZXMgcGh5c2ljYWwgWHBsb3JlciBwYXJhbGxlbCBoYXJkd2FyZSB8IEltcGxlbWVudGVkIHdpdGggc3VwcG9ydGVkIGhhcmR3YXJlIHwKCm4wMGJST00gaXRzZWxmIGRlbGliZXJhdGVseSBoYXMgKipubyBjaGVhdCBmdW5jdGlvbmFsaXR5Kio7IGF0dGFjaGluZyBVbmlST00Kb3IgYW5vdGhlciBjaGVhdCBjYXJ0cmlkZ2UgY2Fubm90IHR1cm4gYSBQUy1YIEVYRSBpbnRvIGFuIGV4cGFuc2lvbi1wb3J0CmZpcm13YXJlIGltYWdlLiBUaGUgc3RhbmRhbG9uZSBydW50aW1lIHRoZXJlZm9yZSBuZXZlciBwcm9iZXMsIHdyaXRlcyBvcgpob29rcyBhIGNhcnRyaWRnZSBpbiBhbiBlbXVsYXRvci4gSGFyZHdhcmUtb25seSBmZWF0dXJlcyBzdGF5IGluCmBuMDBicm9tLnJvbWAsIHdoZXJlIHRoZXkgYmVsb25nLgoKYG4wMGJyb20tcmVsb2NhdGVkLWxlZ2FjeS5wc2V4ZWAgaXMgcmV0YWluZWQgaW4gdGhlIGFydGlmYWN0IG9ubHkgYXMgYSBzb3VyY2UKY29tcGFyaXNvbiByZWZlcmVuY2UuIERvIG5vdCB1c2UgaXQgZm9yIHRlc3Rpbmc7IGl0IGlzIHRoZSBvbGRlciBjb252ZXJzaW9uCmFwcHJvYWNoIGJlaW5nIHJlcGxhY2VkLgoKIyMgUHJlcmVxdWlzaXRlcwoKLSBQeXRob24gMy4xMCBvciBuZXdlcgotIENNYWtlIDMuMjUgb3IgbmV3ZXIgKG9ubHkgbmVlZGVkIGZvciB0aGUgQ01ha2UgdGFyZ2V0KQotIEtpbmdjb20gYXJtaXBzCi0gQW4gdXBzdHJlYW0gbjAwYlJPTSBjaGVja291dCBvciByZWxlYXNlIHNvdXJjZSBhcmNoaXZlLCBwaW5uZWQgdG8gMC4zMGIKClRoZSByZXBvc2l0b3J5IGRvZXMgbm90IHZlbmRvciB0aGlyZC1wYXJ0eSBzb3VyY2UuIFRoaXMga2VlcHMgbGljZW5zaW5nIGFuZApwcm92ZW5hbmNlIGNsZWFyIGFuZCBsZXRzIENJIHBpbiB0aGUgZXhhY3QgdXBzdHJlYW0gcmV2aXNpb24uCgojIyBMb2NhbCBidWlsZAoKU2V0IGBOMDBCUk9NX1NPVVJDRV9ESVJgIHRvIGEgY2hlY2tvdXQgd2hvc2Ugcm9vdCBjb250YWlucyBgcm9tL24wMGJyb20uYXNtYC4KVGhlIGF0dGFjaGVkIHNvdXJjZSBhcmNoaXZlIGNhbiBiZSBleHRyYWN0ZWQgdG8gYSB0ZW1wb3JhcnkgZGlyZWN0b3J5IGFuZCB1c2VkCnRoZSBzYW1lIHdheS4KCmBgYHBvd2Vyc2hlbGwKcHl0aG9uIHRvb2xzXGJ1aWxkX24wMGJyb20ucHkgYAogIC0tc291cmNlLWRpciBDOlxwYXRoXHRvXG4wMGJyb20gYAogIC0tYXJtaXBzIEM6XHBhdGhcdG9cYXJtaXBzLmV4ZSBgCiAgLS1vdXQtZGlyIGRpc3QKYGBgCgpUaGUgY29tbWFuZCB3cml0ZXMgYGRpc3QvbjAwYnJvbS5yb21gLCB0aGUgbGVnYWN5IHJlZmVyZW5jZSBpbWFnZSBhbmQgYQpgZGlzdC9tYW5pZmVzdC5qc29uYC4gQnVpbGQgdGhlIHJlbGVhc2Ugc3RhbmRhbG9uZSBleGVjdXRhYmxlIHNlcGFyYXRlbHkgd2l0aAphIE1JUFMgR0NDIGFuZCBvYmpjb3B5IHBhaXI6CgpgYGBwb3dlcnNoZWxsCnB5dGhvbiB0b29sc1xidWlsZF9iYXJlbWV0YWwucHkgYAogIC0tZ2NjIEM6XHBhdGhcdG9cbWlwc2VsLW5vbmUtZWxmLWdjYy5leGUgYAogIC0tb2JqY29weSBDOlxwYXRoXHRvXG1pcHNlbC1ub25lLWVsZi1vYmpjb3B5LmV4ZSBgCiAgLS1vdXRwdXQgZGlzdFxuMDBicm9tLnBzZXhlCmBgYAoKVGhlIHN0YW5kYWxvbmUgb3V0cHV0IGlzIGEgdmFsaWQgUFMtWCBFWEUgKGBQUy1YIEVYRWAgbWFnaWMsIGFsaWduZWQgcGF5bG9hZCwKbG9hZCBhZGRyZXNzIGAweDgwMDEwMDAwYCwgYW5kIGVudHJ5IHBvaW50IGluc2lkZSB0aGUgcGF5bG9hZCkuCgpGb3IgQ01ha2UgdXNlcnM6CgpgYGBwb3dlcnNoZWxsCmNtYWtlIC1TIC4gLUIgYnVpbGQgLUcgTmluamEgYAogIC1ETjAwQlJPTV9TT1VSQ0VfRElSPUM6XHBhdGhcdG9cbjAwYnJvbSBgCiAgLURBUk1JUFNfRVhFQ1VUQUJMRT1DOlxwYXRoXHRvXGFybWlwcy5leGUKY21ha2UgLS1idWlsZCBidWlsZCAtLXRhcmdldCBuMDBicm9tCmBgYAoKIyMgR2l0SHViIEFjdGlvbnMKCmAuZ2l0aHViL3dvcmtmbG93cy9idWlsZC55bWxgIGJ1aWxkcyBhcm1pcHMgZnJvbSBpdHMgdXBzdHJlYW0gQ01ha2UgcHJvamVjdCwKY2hlY2tzIG91dCBuMDBiUk9NIHRhZyBgMC4zMGJgLCBidWlsZHMgdGhlIGluZGVwZW5kZW50IGJhcmUtbWV0YWwgRVhFIHdpdGggYQpNSVBTIGNyb3NzIGNvbXBpbGVyLCB2ZXJpZmllcyBpdHMgUFMtWCBFWEUgaGVhZGVyIGFuZCBpZGVudGlmeWluZyBzdHJpbmdzLCBhbmQKdXBsb2FkcyB0aGUgaW1hZ2VzIHBsdXMgbWFuaWZlc3QgYXMgYSB3b3JrZmxvdyBhcnRpZmFjdC4gSXQgcnVucyBvbiBwdXNoLCBwdWxsCnJlcXVlc3QgYW5kIG1hbnVhbCBkaXNwYXRjaC4KCiMjIFByb3ZlbmFuY2UgYW5kIGxpY2Vuc2luZwoKbjAwYlJPTSBpcyBieSBMYW1lZ3V5NjQgYW5kIGNvbnRyaWJ1dG9yczsgaXRzIG9yaWdpbmFsIGxpY2Vuc2UgYW5kIHNvdXJjZQpyZW1haW4gdXBzdHJlYW0gYXQgW0xhbWVndXk2NC9uMDBicm9tXShodHRwczovL2dpdGh1Yi5jb20vTGFtZWd1eTY0L24wMGJyb20pLgphcm1pcHMgaXMgYnkgS2luZ2NvbSBhbmQgY29udHJpYnV0b3JzLiBUaGUgUFMxIGV4ZWN1dGFibGUgbGF5b3V0IHJlZmVyZW5jZSBpcwpNSVQtbGljZW5zZWQgaW4gW3NwaWN5anBlZy9wczEtYmFyZS1tZXRhbF0oaHR0cHM6Ly9naXRodWIuY29tL3NwaWN5anBlZy9wczEtYmFyZS1tZXRhbCkuClRoaXMgcmVwb3NpdG9yeSdzIGJ1aWxkIHNjcmlwdHMgYXJlIHByb3ZpZGVkIHVuZGVyIHRoZSBNSVQgbGljZW5zZS4K
+# n00bROM bare-metal standalone PS-X EXE
+
+This repository produces two different PS1 images from the proven n00bROM
+0.30b source:
+
+- `n00brom.rom`: the original expansion-port cartridge firmware image
+  (`romhead.bin + ramprog.bin`), built with Kingcom's armips assembler.
+- `n00brom.psexe`: the standalone release. It is a new RAM-resident,
+  direct-hardware program at `0x80010000`; it does **not** execute n00bROM's
+  BIOS interrupt hook, cartridge ROM bootstrap, or expansion-port mappings.
+
+The standalone runtime's GPU and SIO0 setup follows the proven register-level
+patterns in [spicyjpeg/ps1-bare-metal](https://github.com/spicyjpeg/ps1-bare-metal).
+Its controller transport enables RX, waits for DSR acknowledgements and accepts
+digital, analog-stick and DualShock reply IDs on controller port 1. This avoids
+the cartridge-era controller code that could display a frame but never accept
+input in emulators.
+
+## First bare-metal build
+
+Load **only** `n00brom.psexe` from the current Actions artifact. Its opening
+screen reads `N00BROM STANDALONE`, `BARE METAL RUNTIME`, and `INPUT IS DIRECT
+SIO0`; a screen carrying n00bROM's original disclaimer is the retired
+relocated reference build, not this executable.
+
+- Press **SELECT** to open Settings.
+- Press **START** to open the Disc Services status page.
+- In Settings, use the **D-pad** to move, **Cross** to change the available
+  in-memory video/background options, and **SELECT** or **START** to return.
+
+The screen immediately changes `PAD 1: WAITING` to `DIGITAL`, `ANALOG STICK`
+or `DUALSHOCK` after a compatible controller answers. That gives an explicit
+controller transport check instead of treating a frozen splash screen as a
+successful boot.
+
+## Feature compatibility
+
+The requested rewrite has to distinguish capabilities that belong to the
+n00bROM program from capabilities that physically belong to the cartridge.
+
+| Capability | Bare-metal EXE | Original cartridge ROM |
+| --- | --- | --- |
+| GPU home/settings UI and direct controller polling | Implemented | Implemented |
+| Video/background settings for the running session | Implemented | Implemented and EEPROM-persistent |
+| CD services | Dedicated direct-CD port in progress | Implemented through the intercepted BIOS bootstrap |
+| Serial PS-X EXE loader and serial TTY | Direct-SIO1 port in progress | Implemented |
+| Exception display | Bare exception handler port in progress | Implemented through BIOS hooks |
+| EEPROM identification, save settings and flasher | Requires physical expansion-port EEPROM | Implemented with supported hardware |
+| Xplorer upload/TTY/PCDRV | Requires physical Xplorer parallel hardware | Implemented with supported hardware |
+
+n00bROM itself deliberately has **no cheat functionality**; attaching UniROM
+or another cheat cartridge cannot turn a PS-X EXE into an expansion-port
+firmware image. The standalone runtime therefore never probes, writes or
+hooks a cartridge in an emulator. Hardware-only features stay in
+`n00brom.rom`, where they belong.
+
+`n00brom-relocated-legacy.psexe` is retained in the artifact only as a source
+comparison reference. Do not use it for testing; it is the older conversion
+approach being replaced.
+
+## Prerequisites
+
+- Python 3.10 or newer
+- CMake 3.25 or newer (only needed for the CMake target)
+- Kingcom armips
+- An upstream n00bROM checkout or release source archive, pinned to 0.30b
+
+The repository does not vendor third-party source. This keeps licensing and
+provenance clear and lets CI pin the exact upstream revision.
+
+## Local build
+
+Set `N00BROM_SOURCE_DIR` to a checkout whose root contains `rom/n00brom.asm`.
+The attached source archive can be extracted to a temporary directory and used
+the same way.
+
+```powershell
+python tools\build_n00brom.py `
+  --source-dir C:\path\to\n00brom `
+  --armips C:\path\to\armips.exe `
+  --out-dir dist
+```
+
+The command writes `dist/n00brom.rom`, the legacy reference image and a
+`dist/manifest.json`. Build the release standalone executable separately with
+a MIPS GCC and objcopy pair:
+
+```powershell
+python tools\build_baremetal.py `
+  --gcc C:\path\to\mipsel-none-elf-gcc.exe `
+  --objcopy C:\path\to\mipsel-none-elf-objcopy.exe `
+  --output dist\n00brom.psexe
+```
+
+The standalone output is a valid PS-X EXE (`PS-X EXE` magic, aligned payload,
+load address `0x80010000`, and entry point inside the payload).
+
+For CMake users:
+
+```powershell
+cmake -S . -B build -G Ninja `
+  -DN00BROM_SOURCE_DIR=C:\path\to\n00brom `
+  -DARMIPS_EXECUTABLE=C:\path\to\armips.exe
+cmake --build build --target n00brom
+```
+
+## GitHub Actions
+
+`.github/workflows/build.yml` builds armips from its upstream CMake project,
+checks out n00bROM tag `0.30b`, builds the independent bare-metal EXE with a
+MIPS cross compiler, verifies its PS-X EXE header and identifying strings, and
+uploads the images plus manifest as a workflow artifact. It runs on push, pull
+request and manual dispatch.
+
+## Provenance and licensing
+
+n00bROM is by Lameguy64 and contributors; its original license and source
+remain upstream at [Lameguy64/n00brom](https://github.com/Lameguy64/n00brom).
+armips is by Kingcom and contributors. The PS1 executable layout reference is
+MIT-licensed in [spicyjpeg/ps1-bare-metal](https://github.com/spicyjpeg/ps1-bare-metal).
+This repository's build scripts are provided under the MIT license.

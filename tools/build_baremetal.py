@@ -1,1 +1,96 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJCdWlsZCB0aGUgaW5kZXBlbmRlbnQgbjAwYlJPTSBiYXJlLW1ldGFsIFBTLVggRVhFIHRhcmdldC4iIiIKCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCBhcmdwYXJzZQppbXBvcnQgaGFzaGxpYgppbXBvcnQganNvbgppbXBvcnQgc3VicHJvY2VzcwppbXBvcnQgdGVtcGZpbGUKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCgpmcm9tIHJhd190b19wc2V4ZSBpbXBvcnQgd3JpdGVfcHNleGUKClJPT1QgPSBQYXRoKF9fZmlsZV9fKS5yZXNvbHZlKCkucGFyZW50c1sxXQpCQVNFX0FERFJFU1MgPSAweDgwMDEwMDAwClNUQUNLX1BPSU5URVIgPSAweDgwMUZGRjAwCgoKZGVmIHJ1bihjb21tYW5kOiBsaXN0W3N0cl0pIC0+IE5vbmU6CiAgICBwcmludCgiKyIsICIgIi5qb2luKGNvbW1hbmQpKQogICAgc3VicHJvY2Vzcy5ydW4oY29tbWFuZCwgY2hlY2s9VHJ1ZSkKCgpkZWYgc2hhMjU2KHBhdGg6IFBhdGgpIC0+IHN0cjoKICAgIGRpZ2VzdCA9IGhhc2hsaWIuc2hhMjU2KCkKICAgIHdpdGggcGF0aC5vcGVuKCJyYiIpIGFzIHN0cmVhbToKICAgICAgICBmb3IgY2h1bmsgaW4gaXRlcihsYW1iZGE6IHN0cmVhbS5yZWFkKDEwMjQgKiAxMDI0KSwgYiIiKToKICAgICAgICAgICAgZGlnZXN0LnVwZGF0ZShjaHVuaykKICAgIHJldHVybiBkaWdlc3QuaGV4ZGlnZXN0KCkKCgpkZWYgYnVpbGQoZ2NjOiBQYXRoLCBvYmpjb3B5OiBQYXRoLCBvdXRwdXQ6IFBhdGgpIC0+IE5vbmU6CiAgICBvdXRwdXQucGFyZW50Lm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKICAgIHdpdGggdGVtcGZpbGUuVGVtcG9yYXJ5RGlyZWN0b3J5KHByZWZpeD0ibjAwYnJvbS1iYXJlbWV0YWwtIikgYXMgdGVtcG9yYXJ5OgogICAgICAgIHRlbXBvcmFyeV9wYXRoID0gUGF0aCh0ZW1wb3JhcnkpCiAgICAgICAgZWxmID0gdGVtcG9yYXJ5X3BhdGggLyAibjAwYnJvbS1iYXJlbWV0YWwuZWxmIgogICAgICAgIHJhdyA9IHRlbXBvcmFyeV9wYXRoIC8gIm4wMGJyb20tYmFyZW1ldGFsLmJpbiIKICAgICAgICBydW4oCiAgICAgICAgICAgIFsKICAgICAgICAgICAgICAgIHN0cihnY2MpLAogICAgICAgICAgICAgICAgIi1tYXJjaD1yMzAwMCIsCiAgICAgICAgICAgICAgICAiLW1hYmk9MzIiLAogICAgICAgICAgICAgICAgIi1tZnAzMiIsCiAgICAgICAgICAgICAgICAiLW1uby1hYmljYWxscyIsCiAgICAgICAgICAgICAgICAiLWZuby1waWMiLAogICAgICAgICAgICAgICAgIi1mZnJlZXN0YW5kaW5nIiwKICAgICAgICAgICAgICAgICItZm5vLWJ1aWx0aW4iLAogICAgICAgICAgICAgICAgIi1mbm8tc3RhY2stcHJvdGVjdG9yIiwKICAgICAgICAgICAgICAgICItZm5vLXN0cmljdC1hbGlhc2luZyIsCiAgICAgICAgICAgICAgICAiLUcwIiwKICAgICAgICAgICAgICAgICItT3MiLAogICAgICAgICAgICAgICAgIi1XYWxsIiwKICAgICAgICAgICAgICAgICItV2V4dHJhIiwKICAgICAgICAgICAgICAgICItV2Vycm9yIiwKICAgICAgICAgICAgICAgICItbm9zdGRsaWIiLAogICAgICAgICAgICAgICAgIi1XbCwtLWdjLXNlY3Rpb25zIiwKICAgICAgICAgICAgICAgIGYiLVdsLC1ULHtST09UIC8gJ3N0YW5kYWxvbmUnIC8gJ2JhcmUubGQnfSIsCiAgICAgICAgICAgICAgICAiLW8iLAogICAgICAgICAgICAgICAgc3RyKGVsZiksCiAgICAgICAgICAgICAgICBzdHIoUk9PVCAvICJzdGFuZGFsb25lIiAvICJzdGFydC5TIiksCiAgICAgICAgICAgICAgICBzdHIoUk9PVCAvICJzdGFuZGFsb25lIiAvICJtYWluLmMiKSwKICAgICAgICAgICAgXQogICAgICAgICkKICAgICAgICBydW4oW3N0cihvYmpjb3B5KSwgIi1PIiwgImJpbmFyeSIsIHN0cihlbGYpLCBzdHIocmF3KV0pCiAgICAgICAgd3JpdGVfcHNleGUoCiAgICAgICAgICAgIHJhdy5yZWFkX2J5dGVzKCksCiAgICAgICAgICAgIG91dHB1dCwKICAgICAgICAgICAgbG9hZF9hZGRyZXNzPUJBU0VfQUREUkVTUywKICAgICAgICAgICAgZW50cnlfcG9pbnQ9QkFTRV9BRERSRVNTLAogICAgICAgICAgICBzdGFja19wb2ludGVyPVNUQUNLX1BPSU5URVIsCiAgICAgICAgICAgIHJlZ2lvbj0ibjAwYlJPTSBiYXJlIG1ldGFsIiwKICAgICAgICApCgogICAgIyBBZGQgdGhlIGZpbmFsIHJlbGVhc2UgYXJ0aWZhY3QgdG8gdGhlIG5hdGl2ZS1idWlsZCBwcm92ZW5hbmNlIG1hbmlmZXN0CiAgICAjIHdoZW4gYm90aCBvdXRwdXRzIGFyZSBwcm9kdWNlZCBpbnRvIHRoZSBzYW1lIGRpcmVjdG9yeSAoYXMgaW4gQ0kpLgogICAgbWFuaWZlc3RfcGF0aCA9IG91dHB1dC5wYXJlbnQgLyAibWFuaWZlc3QuanNvbiIKICAgIG1hbmlmZXN0ID0ge30KICAgIGlmIG1hbmlmZXN0X3BhdGguaXNfZmlsZSgpOgogICAgICAgIG1hbmlmZXN0ID0ganNvbi5sb2FkcyhtYW5pZmVzdF9wYXRoLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKSkKICAgIG1hbmlmZXN0WyJuMDBicm9tX2JhcmVtZXRhbF9wc2V4ZV9zaGEyNTYiXSA9IHNoYTI1NihvdXRwdXQpCiAgICBtYW5pZmVzdFsibjAwYnJvbV9iYXJlbWV0YWxfcHNleGVfc2l6ZSJdID0gc3RyKG91dHB1dC5zdGF0KCkuc3Rfc2l6ZSkKICAgIG1hbmlmZXN0X3BhdGgud3JpdGVfdGV4dChqc29uLmR1bXBzKG1hbmlmZXN0LCBpbmRlbnQ9MikgKyAiXG4iLCBlbmNvZGluZz0idXRmLTgiKQoKCmRlZiBtYWluKCkgLT4gTm9uZToKICAgIHBhcnNlciA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKCkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tZ2NjIiwgdHlwZT1QYXRoLCByZXF1aXJlZD1UcnVlKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1vYmpjb3B5IiwgdHlwZT1QYXRoLCByZXF1aXJlZD1UcnVlKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1vdXRwdXQiLCB0eXBlPVBhdGgsIHJlcXVpcmVkPVRydWUpCiAgICBhcmdzID0gcGFyc2VyLnBhcnNlX2FyZ3MoKQogICAgYnVpbGQoYXJncy5nY2MucmVzb2x2ZSgpLCBhcmdzLm9iamNvcHkucmVzb2x2ZSgpLCBhcmdzLm91dHB1dC5yZXNvbHZlKCkpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKQo=
+#!/usr/bin/env python3
+"""Build the independent n00bROM bare-metal PS-X EXE target."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import subprocess
+import tempfile
+from pathlib import Path
+
+from raw_to_psexe import write_psexe
+
+ROOT = Path(__file__).resolve().parents[1]
+BASE_ADDRESS = 0x80010000
+STACK_POINTER = 0x801FFF00
+
+
+def run(command: list[str]) -> None:
+    print("+", " ".join(command))
+    subprocess.run(command, check=True)
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def build(gcc: Path, objcopy: Path, output: Path) -> None:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="n00brom-baremetal-") as temporary:
+        temporary_path = Path(temporary)
+        elf = temporary_path / "n00brom-baremetal.elf"
+        raw = temporary_path / "n00brom-baremetal.bin"
+        run(
+            [
+                str(gcc),
+                "-march=r3000",
+                "-mabi=32",
+                "-mfp32",
+                "-mno-abicalls",
+                "-fno-pic",
+                "-ffreestanding",
+                "-fno-builtin",
+                "-fno-stack-protector",
+                "-fno-strict-aliasing",
+                "-G0",
+                "-Os",
+                "-Wall",
+                "-Wextra",
+                "-Werror",
+                "-nostdlib",
+                "-Wl,--gc-sections",
+                f"-Wl,-T,{ROOT / 'standalone' / 'bare.ld'}",
+                "-o",
+                str(elf),
+                str(ROOT / "standalone" / "start.S"),
+                str(ROOT / "standalone" / "main.c"),
+            ]
+        )
+        run([str(objcopy), "-O", "binary", str(elf), str(raw)])
+        write_psexe(
+            raw.read_bytes(),
+            output,
+            load_address=BASE_ADDRESS,
+            entry_point=BASE_ADDRESS,
+            stack_pointer=STACK_POINTER,
+            region="n00bROM bare metal",
+        )
+
+    # Add the final release artifact to the native-build provenance manifest
+    # when both outputs are produced into the same directory (as in CI).
+    manifest_path = output.parent / "manifest.json"
+    manifest = {}
+    if manifest_path.is_file():
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["n00brom_baremetal_psexe_sha256"] = sha256(output)
+    manifest["n00brom_baremetal_psexe_size"] = str(output.stat().st_size)
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--gcc", type=Path, required=True)
+    parser.add_argument("--objcopy", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    build(args.gcc.resolve(), args.objcopy.resolve(), args.output.resolve())
+
+
+if __name__ == "__main__":
+    main()
