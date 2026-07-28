@@ -52,7 +52,8 @@ jobs:
           from pathlib import Path
           exe = Path("dist/n00brom.psexe").read_bytes()
           assert exe[:8] == b"PS-X EXE"
-          entry, gp, load, size, sp, stack_size = struct.unpack_from("<6I", exe, 0x10)
+          entry, gp, load, size = struct.unpack_from("<4I", exe, 0x10)
+          sp, stack_size = struct.unpack_from("<2I", exe, 0x30)
           assert load == 0x80010000
           assert entry == load
           assert size % 2048 == 0
