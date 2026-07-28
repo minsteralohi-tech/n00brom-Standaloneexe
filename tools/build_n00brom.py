@@ -19,6 +19,7 @@ from raw_to_psexe import write_psexe
 STANDALONE_BASE = 0x80010000
 STANDALONE_STACK = 0x801FFF00
 PAD_CTRL_WITH_RX = "0x1007"  # TX + DTR + RX + DSR acknowledge interrupt
+PAD_ACK_TIMEOUT = "1000"  # ~120 us at the PS1 CPU clock
 
 
 def sha256(path: Path) -> str:
@@ -116,6 +117,27 @@ def make_standalone_source(original: str) -> str:
     )
 
 
+def patch_standalone_pad_source(source: str) -> str:
+    """Adapt n00bROM's cartridge-era pad polling for a BIOS-loaded EXE."""
+    replacements = source.count("0x1003")
+    if replacements != 2:
+        raise RuntimeError("unexpected controller setup in pad.inc")
+    patched = source.replace("0x1003", PAD_CTRL_WITH_RX)
+
+    # The original 100-iteration spin is about 12 microseconds and routinely
+    # expires before an accurate emulator presents the controller's ACK. The
+    # ps1-bare-metal controller reference uses a 120 microsecond timeout.
+    patched, timeout_replacements = re.subn(
+        r"bgt\s+v1,\s*100,\s*@@timeout",
+        f"bgt\tv1, {PAD_ACK_TIMEOUT}, @@timeout",
+        patched,
+        count=1,
+    )
+    if timeout_replacements != 1:
+        raise RuntimeError("unexpected controller timeout loop in pad.inc")
+    return patched
+
+
 def build(source_dir: Path, armips: Path, out_dir: Path) -> dict[str, str]:
     rom_dir = locate_rom(source_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -137,18 +159,11 @@ def build(source_dir: Path, armips: Path, out_dir: Path) -> dict[str, str]:
         standalone_asm = stage / "n00brom-standalone.asm"
         standalone_asm.write_text(make_standalone_source(source_text), encoding="utf-8")
 
-        # n00bROM's original controller code targets a cartridge boot context
-        # and configures SIO0 with TX/DTR but not RX enabled (0x1003). A
-        # stand-alone executable must explicitly enable RX or current emulators
-        # commonly expose no controller input. Keep this change out of the
-        # native ROM build above.
+        # Keep controller fixes out of the native ROM build above.
         pad_path = stage / "pad.inc"
-        pad_source = pad_path.read_text(encoding="utf-8")
-        replacements = pad_source.count("0x1003")
-        if replacements != 2:
-            raise RuntimeError("unexpected controller setup in pad.inc")
         pad_path.write_text(
-            pad_source.replace("0x1003", PAD_CTRL_WITH_RX), encoding="utf-8"
+            patch_standalone_pad_source(pad_path.read_text(encoding="utf-8")),
+            encoding="utf-8",
         )
 
         # Keep the on-screen instructions truthful for a PS-X EXE. The ROM
