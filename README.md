@@ -8,7 +8,7 @@ This repository packages the proven n00bROM 0.30b source for two PS1 targets:
   n00bROM RAM program together with the routines/data that normally live in
   the cartridge ROM window into main RAM. It is useful for emulator and
   development-loader testing. The standalone target also enables SIO0 receive
-  mode for controller polling, which is required by current emulators.
+  mode for controller polling and uses an emulator-safe ACK timeout.
 
 ## Standalone controls and limitations
 
