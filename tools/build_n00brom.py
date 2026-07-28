@@ -70,7 +70,13 @@ def make_standalone_source(original: str) -> str:
     ram_block = original[first:second]
     ram_block = ram_block[ram_block.find("\n", ram_block.find(".create")) + 1 :]
     ram_block = ram_block[: ram_block.rfind(".close")]
-    ram_block = re.sub(r"^\s*dw\s+PROG_addr.*\n", "", ram_block, count=1, flags=re.MULTILINE)
+    ram_block = re.sub(
+        r"^\s*dw\s+PROG_addr.*\n\s*dw\s+\(program_end-program_start\).*\n",
+        "",
+        ram_block,
+        count=1,
+        flags=re.MULTILINE,
+    )
     ram_block = ram_block.replace("\n\tjal\tmain\t\t\t\t\t; Jump to main\n\trfe", "\n\tjal\tmain\t\t\t\t\t; Jump to main\n\tnop")
     if "\trfe" in ram_block:
         ram_block = ram_block.replace("\n\trfe", "\n\tnop", 1)
