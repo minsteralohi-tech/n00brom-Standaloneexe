@@ -1,0 +1,70 @@
+name: Build n00bROM images
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  N00BROM_TAG: 0.30b
+  ARMIPS_REPOSITORY: Kingcom/armips
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this project
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes cmake ninja-build g++ python3
+
+      - name: Fetch pinned n00bROM source
+        run: |
+          git clone --depth 1 --branch "$N00BROM_TAG" \
+            https://github.com/Lameguy64/n00brom.git "$RUNNER_TEMP/n00brom-source"
+
+      - name: Build armips
+        run: |
+          git clone --depth 1 --recurse-submodules \
+            "https://github.com/$ARMIPS_REPOSITORY.git" "$RUNNER_TEMP/armips-source"
+          cmake -S "$RUNNER_TEMP/armips-source" -B "$RUNNER_TEMP/armips-build" \
+            -G Ninja -DCMAKE_BUILD_TYPE=Release \
+            -DARMIPS_PRECOMPILE_HEADERS=OFF -DARMIPS_USE_STD_FILESYSTEM=ON
+          cmake --build "$RUNNER_TEMP/armips-build" --target armips-bin
+
+      - name: Build native ROM and standalone PS-X EXE
+        run: |
+          python3 tools/build_n00brom.py \
+            --source-dir "$RUNNER_TEMP/n00brom-source" \
+            --armips "$RUNNER_TEMP/armips-build/armips" \
+            --out-dir dist
+
+      - name: Verify PS-X EXE structure
+        run: |
+          python3 - <<'PY'
+          import struct
+          from pathlib import Path
+          exe = Path("dist/n00brom.psexe").read_bytes()
+          assert exe[:8] == b"PS-X EXE"
+          entry, gp, load, size, sp, stack_size = struct.unpack_from("<6I", exe, 0x10)
+          assert load == 0x80010000
+          assert entry == load
+          assert size % 2048 == 0
+          assert len(exe) == 2048 + size
+          assert 0x80010000 <= entry < load + size
+          assert 0x80010000 <= sp < 0x80200000
+          print(f"valid PS-X EXE: entry={entry:#x}, load={load:#x}, size={size:#x}")
+          PY
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: n00brom-ps1-images
+          path: dist/
+          if-no-files-found: error
