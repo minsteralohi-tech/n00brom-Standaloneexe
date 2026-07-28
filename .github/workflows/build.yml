@@ -38,6 +38,11 @@ jobs:
             -DARMIPS_PRECOMPILE_HEADERS=OFF -DARMIPS_USE_STD_FILESYSTEM=ON
           cmake --build "$RUNNER_TEMP/armips-build" --target armips-bin
 
+      - name: Validate standalone source transformation
+        run: |
+          python3 tools/verify_standalone_transform.py \
+            --source-dir "$RUNNER_TEMP/n00brom-source"
+
       - name: Build native ROM and standalone PS-X EXE
         run: |
           python3 tools/build_n00brom.py \
