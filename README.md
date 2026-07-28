@@ -7,8 +7,19 @@ This repository packages the proven n00bROM 0.30b source for two PS1 targets:
 - `n00brom.psexe`: a standalone BIOS-loadable PS-X EXE. It relocates the
   n00bROM RAM program together with the routines/data that normally live in
   the cartridge ROM window into main RAM. It is useful for emulator and
-  development-loader testing; cartridge-only expansion-port behavior cannot be
-  provided by a RAM executable.
+  development-loader testing. The standalone target also enables SIO0 receive
+  mode for controller polling, which is required by current emulators.
+
+## Standalone controls and limitations
+
+Use a **Digital Controller** configured on emulator controller port 1. SELECT
+opens the n00bROM menu; use the D-pad to navigate it. START is intentionally
+kept on the home screen: n00bROM's original START path returns to the BIOS CD
+bootstrap that it intercepted from an expansion-port cartridge. A PS-X EXE is
+launched by the BIOS instead, so it does not have that return address and
+cannot use START to boot a CD. Use the native `n00brom.rom` image on compatible
+expansion-port hardware for the full cartridge boot, EEPROM flash and Xplorer
+functionality.
 
 The PS-X EXE layout follows the format and address conventions used by
 [spicyjpeg/ps1-bare-metal](https://github.com/spicyjpeg/ps1-bare-metal). The
@@ -69,4 +80,3 @@ remain upstream at [Lameguy64/n00brom](https://github.com/Lameguy64/n00brom).
 armips is by Kingcom and contributors. The PS1 executable layout reference is
 MIT-licensed in [spicyjpeg/ps1-bare-metal](https://github.com/spicyjpeg/ps1-bare-metal).
 This repository's build scripts are provided under the MIT license.
-
