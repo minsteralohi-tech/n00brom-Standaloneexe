@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from build_n00brom import locate_rom, make_standalone_source
+from build_n00brom import locate_rom, make_standalone_source, patch_standalone_pad_source
 
 
 def main() -> None:
@@ -24,6 +24,12 @@ def main() -> None:
     assert "dw\t\t(program_end-program_start)" not in transformed
     assert "@@exit_boot:\n\tb\t\t@@no_pad\n\tnop" in transformed
     assert "\n\trfe" not in transformed
+
+    pad = patch_standalone_pad_source(
+        (locate_rom(args.source_dir) / "pad.inc").read_text(encoding="utf-8")
+    )
+    assert pad.count("0x1007") == 2
+    assert "bgt\tv1, 1000, @@timeout" in pad
     print("standalone source transformation: OK")
 
 
