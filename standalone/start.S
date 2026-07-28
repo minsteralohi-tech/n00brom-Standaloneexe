@@ -2,9 +2,9 @@
  * Minimal startup compatible with ps1-bare-metal's executable.ld layout.
  *
  * We establish both stack and global pointers ourselves before touching
- * small-data variables.  This makes the entry point safe for BIOS loaders,
- * DuckStation's direct EXE injector and serial loaders that ignore header
- * register values.  We then clear every word in BSS and call main.
+ * small-data variables. This matches ps1-bare-metal's minimal CRT model while
+ * retaining a known stack for serial loaders that do not restore PS-X EXE
+ * registers. We then clear every word in BSS and call main.
  */
 
 	.set noreorder
@@ -13,17 +13,6 @@
 	.ent _start
 
 _start:
-	/*
-	 * A serial loader may DMA the payload into RAM without invalidating the
-	 * instruction cache. Flush it before executing C code, then permanently
-	 * disable CPU interrupts: this standalone target owns no BIOS exception
-	 * handler and must not inherit UniROM's interrupt state.
-	 */
-	jal	flushCache
-	nop
-	mtc0	$zero, $12
-	nop
-
 	/* Do not rely on a loader honoring the PS-X EXE stack fields. */
 	lui	$sp, 0x8020
 	addiu	$sp, $sp, -256

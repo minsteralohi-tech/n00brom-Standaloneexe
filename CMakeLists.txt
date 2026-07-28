@@ -80,7 +80,6 @@ add_custom_command(
 		"${CMAKE_CURRENT_LIST_DIR}/tools/elf_to_psexe.py"
 		"${CMAKE_CURRENT_LIST_DIR}/standalone/bare.ld"
 		"${CMAKE_CURRENT_LIST_DIR}/standalone/start.S"
-		"${CMAKE_CURRENT_LIST_DIR}/standalone/cache.s"
 		"${CMAKE_CURRENT_LIST_DIR}/standalone/ps1_gpu.h"
 		"${CMAKE_CURRENT_LIST_DIR}/standalone/main.c"
 		"${CMAKE_CURRENT_LIST_DIR}/standalone/smoke.c"

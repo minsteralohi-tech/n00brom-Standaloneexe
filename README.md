@@ -58,12 +58,13 @@ In DuckStation, boot the file as an executable (not as a disc image):
 duckstation-qt-x64-ReleaseLTCG.exe -exe n00brom.psexe
 ```
 
-The startup code establishes its own stack and `$gp`, invalidates the CPU
-instruction cache, and disables inherited CPU interrupts before running C
-code. That is required for serial transfer loaders such as UniROM, which may
-otherwise leave stale code in cache or BIOS interrupts active. If DuckStation
-still shows black, use its **interpreter** CPU mode once and disable
-PGXP/runahead while testing; then capture its debug log.
+The startup code establishes its own stack and `$gp` before it clears BSS and
+runs C code. It intentionally follows the minimal ps1-bare-metal CRT path;
+DuckStation already clears its instruction cache when it injects a PS-X EXE,
+and the extra cache-control trampoline previously used here was not portable to
+DuckStation or retail hardware. If DuckStation still shows black, use its
+**interpreter** CPU mode once and disable PGXP/runahead while testing; then
+capture its debug log.
 
 For real hardware, first send the normal `n00brom.psexe` with NOPS `/exe`.
 NOPS's public source shows that `/exe` transfers and uses the PS-X EXE header's
